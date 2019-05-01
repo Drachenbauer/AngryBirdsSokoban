@@ -1,0 +1,21 @@
+package com.zetcode;
+
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
+public class Nest extends Actor
+{
+    public Nest(int x, int y)
+    {
+        super(x, y);
+        
+        initNest();
+    }
+    
+    private void initNest()
+    {
+        ImageIcon iicon = new ImageIcon("src/resources/nest.png");
+        Image image = iicon.getImage();
+        setImage(image);
+    }
+}
