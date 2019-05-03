@@ -441,12 +441,6 @@ public class Board extends JPanel
                 
                 break;
                 
-                case KeyEvent.VK_R:
-                
-                restartLevel();
-                
-                break;
-                
                 case KeyEvent.VK_B:
                 
                 for(Wall wall : walls)
@@ -494,11 +488,18 @@ public class Board extends JPanel
                 		if (egg.moved)
                 		{
                 			egg.undoStep();
+                			isCompleted();
                 		}
                 	}
                 	
                 	bird.moved = false;
                 }
+                
+                break;
+                
+                case KeyEvent.VK_R:
+                
+                restartLevel();
                 
                 break;
                 
@@ -508,7 +509,6 @@ public class Board extends JPanel
                 level_num = "Level 0";
                 
                 restartLevel();
-                isCompleted();
                 
                 break;
                 
