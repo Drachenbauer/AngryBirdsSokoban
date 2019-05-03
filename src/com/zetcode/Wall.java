@@ -3,7 +3,7 @@ package com.zetcode;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
-public class Wall extends Actor
+public class Wall extends Tile
 {
 	ImageIcon iicon1 = new ImageIcon("src/resources/brick_wall.png");
 	ImageIcon iicon2 = new ImageIcon("src/resources/ice_wall.png");

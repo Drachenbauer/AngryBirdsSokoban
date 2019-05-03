@@ -131,14 +131,14 @@ public class Board extends JPanel
         g.setColor(new Color(0, 255, 0));
         g.fillRect(0, 0, WIDTH, HIGHT);
         
-        ArrayList<Actor> world = new ArrayList<>();
+        ArrayList<Tile> world = new ArrayList<>();
         
         world.addAll(walls);
         world.addAll(nests);
         world.addAll(eggs);
         world.add(bird);
         
-        for (Actor item : world)
+        for (Tile item : world)
         {
             g.drawImage(item.getImage(), item.x(), item.y(), this);    
         }
@@ -504,16 +504,14 @@ public class Board extends JPanel
         }
     }
     
-    private boolean checkWallCollision(Actor actor, int type)
+    private boolean checkWallCollision(Tile actor, int type)
     {
         switch (type)
         {
             case LEFT_COLLISION:
             
-            for (int i = 0; i < walls.size(); i++)
+            for (Wall wall: walls)
             {
-                Wall wall = walls.get(i);
-                
                 if (actor.isLeftCollision(wall))
                 {    
                     return true;
@@ -524,10 +522,8 @@ public class Board extends JPanel
             
             case RIGHT_COLLISION:
             
-            for (int i = 0; i < walls.size(); i++)
-            {    
-                Wall wall = walls.get(i);
-                
+            for (Wall wall: walls)
+            {
                 if (actor.isRightCollision(wall))
                 {
                     return true;
@@ -538,10 +534,8 @@ public class Board extends JPanel
             
             case TOP_COLLISION:
             
-            for (int i = 0; i < walls.size(); i++)
-            {        
-                Wall wall = walls.get(i);
-                
+            for (Wall wall: walls)
+            {
                 if (actor.isTopCollision(wall))
                 {
                     return true;
@@ -552,10 +546,8 @@ public class Board extends JPanel
             
             case BOTTOM_COLLISION:
             
-            for (int i = 0; i < walls.size(); i++)
-            {    
-                Wall wall = walls.get(i);
-                
+            for (Wall wall: walls)
+            {
                 if (actor.isBottomCollision(wall))
                 {    
                     return true;
@@ -577,16 +569,12 @@ public class Board extends JPanel
         {    
             case LEFT_COLLISION:
             
-            for (int i = 0; i < eggs.size(); i++)
+            for (Egg egg : eggs)
             {
-                Egg egg = eggs.get(i);
-                
                 if (bird.isLeftCollision(egg))
                 {
-                    for (int j = 0; j < eggs.size(); j++)
-                    {        
-                        Egg item = eggs.get(j);
-                        
+                    for (Egg item : eggs)
+                    {
                         if (!egg.equals(item))
                         {    
                             if (egg.isLeftCollision(item))
@@ -641,16 +629,12 @@ public class Board extends JPanel
             
             case RIGHT_COLLISION:
             
-            for (int i = 0; i < eggs.size(); i++)
+            for (Egg egg : eggs)
             {
-                Egg egg = eggs.get(i);
-                
                 if (bird.isRightCollision(egg))
                 {
-                    for (int j = 0; j < eggs.size(); j++) 
+                    for (Egg item : eggs) 
                     {
-                        Egg item = eggs.get(j);
-                        
                         if (!egg.equals(item))
                         {
                             if (egg.isRightCollision(item))
@@ -705,16 +689,12 @@ public class Board extends JPanel
             
             case TOP_COLLISION:
                 
-            for (int i = 0; i < eggs.size(); i++)
+            for (Egg egg : eggs)
             {
-                Egg egg = eggs.get(i);
-                
                 if (bird.isTopCollision(egg))
                 {
-                    for (int j = 0; j < eggs.size(); j++)
+                    for (Egg item : eggs)
                     {
-                        Egg item = eggs.get(j);
-                        
                         if (!egg.equals(item))
                         {
                             if (egg.isTopCollision(item))
@@ -769,16 +749,12 @@ public class Board extends JPanel
                 
             case BOTTOM_COLLISION:
                 
-            for (int i = 0; i < eggs.size(); i++)
+            for (Egg egg : eggs)
             {
-                Egg egg = eggs.get(i);
-                
                 if (bird.isBottomCollision(egg))
                 {
-                    for (int j = 0; j < eggs.size(); j++)
+                    for (Egg item : eggs)
                     {
-                        Egg item = eggs.get(j);
-                        
                         if (!egg.equals(item)) 
                         {
                             if (egg.isBottomCollision(item))
@@ -843,14 +819,10 @@ public class Board extends JPanel
         nOfEggs = eggs.size();
         finishedEggs = 0;
         
-        for (int i = 0; i < nOfEggs; i++)
+        for (Egg egg : eggs)
         {
-            Egg egg = eggs.get(i);
-            
-            for (int j = 0; j < nOfEggs; j++)
+            for (Nest nest: nests)
             {
-                Nest nest =  nests.get(j);
-                
                 if (egg.x() == nest.x() && egg.y() == nest.y())
                 {
                     finishedEggs += 1;

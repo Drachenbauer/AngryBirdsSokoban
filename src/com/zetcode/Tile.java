@@ -2,7 +2,7 @@ package com.zetcode;
 
 import java.awt.Image;
 
-public class Actor
+public class Tile
 {
     private final int SPACE = 32;
 
@@ -10,7 +10,7 @@ public class Actor
     private int y;
     private Image image;
 
-    public Actor(int x, int y)
+    public Tile(int x, int y)
     {    
         this.x = x;
         this.y = y;
@@ -46,22 +46,22 @@ public class Actor
         this.y = y;
     }
 
-    public boolean isLeftCollision(Actor actor)
+    public boolean isLeftCollision(Tile actor)
     {    
         return x() - SPACE == actor.x() && y() == actor.y();
     }
 
-    public boolean isRightCollision(Actor actor)
+    public boolean isRightCollision(Tile actor)
     {    
         return x() + SPACE == actor.x() && y() == actor.y();
     }
 
-    public boolean isTopCollision(Actor actor)
+    public boolean isTopCollision(Tile actor)
     {    
         return y() - SPACE == actor.y() && x() == actor.x();
     }
 
-    public boolean isBottomCollision(Actor actor)
+    public boolean isBottomCollision(Tile actor)
     {    
         return y() + SPACE == actor.y() && x() == actor.x();
     }

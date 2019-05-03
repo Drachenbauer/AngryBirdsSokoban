@@ -3,7 +3,7 @@ package com.zetcode;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
-public class Nest extends Actor
+public class Nest extends Tile
 {
     public Nest(int x, int y)
     {

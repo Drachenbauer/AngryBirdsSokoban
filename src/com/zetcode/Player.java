@@ -3,7 +3,7 @@ package com.zetcode;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
-public class Player extends Actor
+public class Player extends Movable
 {
 	ImageIcon iicon_left = new ImageIcon("src/resources/bird_left.png");
 	ImageIcon iicon_right = new ImageIcon("src/resources/bird_right.png");
@@ -74,14 +74,5 @@ public class Player extends Actor
     {
     	Image image = iicon_hop_down.getImage();
         setImage(image);
-    }
-    
-    public void move(int x, int y)
-    {
-        int dx = x() + x;
-        int dy = y() + y;
-        
-        setX(dx);
-        setY(dy);
     }
 }
