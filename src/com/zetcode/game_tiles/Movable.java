@@ -1,4 +1,4 @@
-package com.zetcode;
+package com.zetcode.game_tiles;
 
 public class Movable extends Tile
 {

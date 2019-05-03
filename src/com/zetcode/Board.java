@@ -10,6 +10,12 @@ import java.util.TimerTask;
 
 import javax.swing.JPanel;
 
+import com.zetcode.game_tiles.Egg;
+import com.zetcode.game_tiles.Nest;
+import com.zetcode.game_tiles.Player;
+import com.zetcode.game_tiles.Tile;
+import com.zetcode.game_tiles.Wall;
+
 @SuppressWarnings("serial")
 public class Board extends JPanel
 {
@@ -138,9 +144,9 @@ public class Board extends JPanel
         world.addAll(eggs);
         world.add(bird);
         
-        for (Tile item : world)
+        for (Tile tile : world)
         {
-            g.drawImage(item.getImage(), item.x(), item.y(), this);    
+            g.drawImage(tile.getImage(), tile.x(), tile.y(), this);    
         }
         
         g.setColor(new Color(0, 0, 0));
@@ -589,6 +595,7 @@ public class Board extends JPanel
                         }
                     }
                     
+                    egg.setImage1();
                     egg.move(-SPACE / 4, 0);
                     repaint();
                     
@@ -649,6 +656,7 @@ public class Board extends JPanel
                         }
                     }
                     
+                    egg.setImage1();
                     egg.move(SPACE / 4, 0);
                     repaint();
                     
@@ -709,6 +717,7 @@ public class Board extends JPanel
                         }
                     }
                     
+                    egg.setImage1();
                     egg.move(0, -SPACE / 4);
                     repaint();
                     
@@ -768,7 +777,8 @@ public class Board extends JPanel
                             return true;
                         }
                     }
-                        
+                    
+                    egg.setImage1();
                     egg.move(0, SPACE / 4);
                     repaint();
                     
@@ -826,6 +836,7 @@ public class Board extends JPanel
                 if (egg.x() == nest.x() && egg.y() == nest.y())
                 {
                     finishedEggs += 1;
+                    egg.setImage2();
                 }
             }
         }
