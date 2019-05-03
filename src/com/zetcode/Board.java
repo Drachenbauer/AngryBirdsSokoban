@@ -1,6 +1,7 @@
 package com.zetcode;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -56,6 +57,7 @@ public class Board extends JPanel
     {
         addKeyListener(new TAdapter());
         setFocusable(true);
+        setSize(new Dimension(WIDTH, HIGHT));
         initWorld();
         isCompleted();
     }
@@ -136,7 +138,7 @@ public class Board extends JPanel
     private void buildWorld(Graphics g)
     {
         g.setColor(new Color(0, 255, 0));
-        g.fillRect(0, 0, WIDTH, HIGHT);
+        g.fillRect(OFFSET, OFFSET, WIDTH - OFFSET * 2, HIGHT - OFFSET * 2);
         
         ArrayList<Tile> world = new ArrayList<>();
         
