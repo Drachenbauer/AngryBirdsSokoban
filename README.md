@@ -20,6 +20,41 @@ code-changes:
 
 -four direction-pictures and hopping-animation for the bird (player)
 
--10 levels to choose
+-up to 10 levels to choose from
 
--three wall-styles to choose
+-four wall-styles to choose from
+
+-added progress-strings to show number of solved eggs and as a step-counter
+
+-added an undo-one-step-function
+
+
+Controls:
+
+arrow-keys:
+Move the bird.
+Move against eggs to push them.
+You can´t push more than one egg with one move.
+If you try to push two or more eggs in a row, your bird doesn´t move.
+
+backspace-key:
+Undo last move.
+
+number-keys (0-9):
+Choose your level to solve.
+
+R-key:
+Restart the actual level.
+
+B-key:
+Change wall-style to brick-wall.
+
+I-key:
+Change wall-style to ice-cubes.
+
+S-key:
+Change wall-style to stone-blocks.
+
+W-key:
+Change wall-style to wood-planks.
+
