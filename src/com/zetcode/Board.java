@@ -12,6 +12,7 @@ import java.util.TimerTask;
 import javax.swing.JPanel;
 
 import com.zetcode.game_tiles.Egg;
+import com.zetcode.game_tiles.Movable;
 import com.zetcode.game_tiles.Nest;
 import com.zetcode.game_tiles.Player;
 import com.zetcode.game_tiles.Tile;
@@ -549,7 +550,7 @@ public class Board extends JPanel
         }
     }
     
-    private boolean checkWallCollision(Tile actor, int type)
+    private boolean checkWallCollision(Movable movable, int type)
     {
         switch (type)
         {
@@ -557,7 +558,7 @@ public class Board extends JPanel
             
             for (Wall wall: walls)
             {
-                if (actor.isLeftCollision(wall))
+                if (movable.isLeftCollision(wall))
                 {    
                     return true;
                 }
@@ -569,7 +570,7 @@ public class Board extends JPanel
             
             for (Wall wall: walls)
             {
-                if (actor.isRightCollision(wall))
+                if (movable.isRightCollision(wall))
                 {
                     return true;
                 }
@@ -581,7 +582,7 @@ public class Board extends JPanel
             
             for (Wall wall: walls)
             {
-                if (actor.isTopCollision(wall))
+                if (movable.isTopCollision(wall))
                 {
                     return true;
                 }
@@ -593,7 +594,7 @@ public class Board extends JPanel
             
             for (Wall wall: walls)
             {
-                if (actor.isBottomCollision(wall))
+                if (movable.isBottomCollision(wall))
                 {    
                     return true;
                 }

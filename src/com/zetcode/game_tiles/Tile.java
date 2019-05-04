@@ -4,8 +4,6 @@ import java.awt.Image;
 
 public class Tile
 {
-    private final int SPACE = 32;
-
     private int x;
     private int y;
     private Image image;
@@ -44,25 +42,5 @@ public class Tile
     public void setY(int y)
     {    
         this.y = y;
-    }
-
-    public boolean isLeftCollision(Tile actor)
-    {    
-        return x() - SPACE == actor.x() && y() == actor.y();
-    }
-
-    public boolean isRightCollision(Tile actor)
-    {    
-        return x() + SPACE == actor.x() && y() == actor.y();
-    }
-
-    public boolean isTopCollision(Tile actor)
-    {    
-        return y() - SPACE == actor.y() && x() == actor.x();
-    }
-
-    public boolean isBottomCollision(Tile actor)
-    {    
-        return y() + SPACE == actor.y() && x() == actor.x();
     }
 }

@@ -20,7 +20,7 @@ public class Sokoban extends JFrame
 
         setTitle("Sokoban");
         
-        this.getContentPane().setPreferredSize(new Dimension(board.WIDTH, board.HIGHT));
+        this.getContentPane().setPreferredSize(new Dimension(board.WIDTH - 10, board.HIGHT - 10));
         this.pack(); //max level size : 32 x 20 tiles
         setResizable(false);
         
