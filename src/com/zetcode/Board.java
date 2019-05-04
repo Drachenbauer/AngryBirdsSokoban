@@ -447,41 +447,7 @@ public class Board extends JPanel
                 
                 break;
                 
-                case KeyEvent.VK_B:
                 
-                for(Wall wall : walls)
-                {
-                    wall.changeWallBrick();
-                }
-                
-                break;
-                
-                case KeyEvent.VK_I:
-                
-                for(Wall wall : walls)
-                {
-                	wall.changeWallIce();
-                }
-                
-                break;
-                
-                case KeyEvent.VK_S:
-                
-                for (Wall wall : walls)
-                {
-                    wall.changeWallStone();
-                }
-                
-                break;
-                
-                case KeyEvent.VK_W:
-                
-                for (Wall wall : walls)
-                {
-                    wall.changeWallWood();
-                }
-                
-                break;
                 
                 case KeyEvent.VK_BACK_SPACE:
                 
@@ -543,6 +509,51 @@ public class Board extends JPanel
                 level_num = "Level 3";
                 
                 restartLevel();
+                
+                break;
+                
+                case KeyEvent.VK_4:
+                
+                level = Levels.LEVEL_4;
+                level_num = "Level 4";
+                
+                restartLevel();
+                
+                break;
+                
+                case KeyEvent.VK_B:
+                
+                for(Wall wall : walls)
+                {
+                    wall.changeWallBrick();
+                }
+                
+                break;
+                
+                case KeyEvent.VK_I:
+                
+                for(Wall wall : walls)
+                {
+                    wall.changeWallIce();
+                }
+                
+                break;
+                
+                case KeyEvent.VK_S:
+                
+                for (Wall wall : walls)
+                {
+                    wall.changeWallStone();
+                }
+                
+                break;
+                
+                case KeyEvent.VK_W:
+                
+                for (Wall wall : walls)
+                {
+                    wall.changeWallWood();
+                }
                 
                 break;
                 
