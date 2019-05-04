@@ -482,20 +482,21 @@ public class Board extends JPanel
                 
                 case KeyEvent.VK_BACK_SPACE:
                 
-                if (bird.moved)
+                if (bird.isMoved)
                 {
                 	bird.undoStep();
                 	
                 	for (Egg egg : eggs)
                 	{
-                		if (egg.moved)
+                		if (egg.isMoved)
                 		{
                 			egg.undoStep();
                 			isCompleted();
+                			egg.isMoved = false;
                 		}
                 	}
                 	
-                	bird.moved = false;
+                	bird.isMoved = false;
                 }
                 
                 break;

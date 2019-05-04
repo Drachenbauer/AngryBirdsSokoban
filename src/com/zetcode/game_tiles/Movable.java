@@ -10,7 +10,7 @@ public class Movable extends Tile
 	
 	private final int SPACE = 32;
 	
-	public boolean moved = false;
+	public boolean isMoved = false;
 	
 	public Movable(int x, int y)
 	{
@@ -28,12 +28,11 @@ public class Movable extends Tile
 	        
 	    setX(dx);
 	    setY(dy);
-	    
-	    moved = true;
 	}
 	
 	public void savePos()
 	{
+		isMoved = true;
 		old_x = dx;
 		old_y = dy;
 	}
