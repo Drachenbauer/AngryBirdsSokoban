@@ -138,6 +138,9 @@ public class Board extends JPanel
     
     private void buildWorld(Graphics g)
     {
+    	g.setColor(new Color(127, 127, 0));
+        g.fillRect(0, 0, WIDTH, HIGHT);
+        
         g.setColor(new Color(0, 255, 0));
         g.fillRect(OFFSET, OFFSET, WIDTH - OFFSET * 2, HIGHT - OFFSET * 2);
         
@@ -153,7 +156,7 @@ public class Board extends JPanel
             g.drawImage(tile.getImage(), tile.x(), tile.y(), this);    
         }
         
-        g.setColor(new Color(0, 0, 0));
+        g.setColor(new Color(255, 255, 0));
         g.drawString("" + finishedEggs + " of " + nOfEggs + " eggs solved", 304, 16);
         g.drawString("" + steps + " steps moved", 816, 16);
         
