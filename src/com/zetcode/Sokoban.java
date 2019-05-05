@@ -7,7 +7,6 @@ import javax.swing.JFrame;
 @SuppressWarnings("serial")
 public class Sokoban extends JFrame
 {
-
     public Sokoban()
     {
         initUI();
