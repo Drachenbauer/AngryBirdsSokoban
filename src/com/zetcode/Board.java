@@ -883,7 +883,7 @@ public class Board extends JPanel
         return false;
     }
     
-    public void isCompleted()
+    private void isCompleted()
     {
         nOfEggs = eggs.size();
         finishedEggs = 0;
