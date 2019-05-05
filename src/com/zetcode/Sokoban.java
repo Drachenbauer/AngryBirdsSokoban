@@ -1,6 +1,5 @@
 package com.zetcode;
 
-import java.awt.Dimension;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 
@@ -19,9 +18,8 @@ public class Sokoban extends JFrame
 
         setTitle("Sokoban");
         
-        getContentPane().setPreferredSize(new Dimension(board.WIDTH, board.HIGHT));
         setResizable(false);
-        pack(); //max level size : 32 x 20 tiles
+        pack();
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);

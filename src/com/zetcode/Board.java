@@ -56,9 +56,10 @@ public class Board extends JPanel
     
     private void initBoard()
     {
+    	setPreferredSize(new Dimension(WIDTH, HIGHT));
+    	setFocusable(true);
+    	
         addKeyListener(new TAdapter());
-        setFocusable(true);
-        setSize(new Dimension(WIDTH, HIGHT));
         initWorld();
         isCompleted();
     }
