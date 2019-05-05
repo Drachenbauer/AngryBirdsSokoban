@@ -243,7 +243,7 @@ public class Board extends JPanel
     								{
     									bird.move(-SPACE / 4, 0);
     						            bird.turnLeft();
-    						            steps += 1;
+    						            ++steps;
     						            isMoving = false;
     						            repaint();
     								}
@@ -307,7 +307,7 @@ public class Board extends JPanel
     								{
     									bird.move(SPACE / 4, 0);
     						            bird.turnRight();
-    						            steps += 1;
+    						            ++steps;
     						            isMoving = false;
     						            repaint();
     								}
@@ -371,7 +371,7 @@ public class Board extends JPanel
     								{
     									bird.move(0, -SPACE / 4);
     						            bird.turnUp();
-    						            steps += 1;
+    						            ++steps;
     						            isMoving = false;
     						            repaint();
     								}
@@ -435,7 +435,7 @@ public class Board extends JPanel
     								{
     									bird.move(0, SPACE / 4);
     						            bird.turnDown();
-    						            steps += 1;
+    						            ++steps;
     						            isMoving = false;
     						            repaint();
     								}
@@ -454,6 +454,7 @@ public class Board extends JPanel
                 if (bird.isMoved)
                 {
                 	bird.undoStep();
+                	--steps;
                 	
                 	for (Egg egg : eggs)
                 	{
@@ -894,7 +895,7 @@ public class Board extends JPanel
             {
                 if (egg.x() == nest.x() && egg.y() == nest.y())
                 {
-                    finishedEggs += 1;
+                    ++finishedEggs;
                     egg.setImage2();
                 }
             }
