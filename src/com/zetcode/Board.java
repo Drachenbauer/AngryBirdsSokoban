@@ -33,8 +33,8 @@ public class Board extends JPanel
     private ArrayList<Egg> eggs;
     private Player bird;
     
-    public final int WIDTH = 1088; // fit up to 32 level-tiles + 2 x OFFSET
-    public final int HIGHT = 704;  // fit up to 20 level-tiles + 2 x OFFSET
+    public final int WIDTH = 1088; // fits up to 32 level-tiles + 2 x OFFSET
+    public final int HIGHT = 704;  // fits up to 20 level-tiles + 2 x OFFSET
     
     private int finishedEggs;
     private int nOfEggs;
