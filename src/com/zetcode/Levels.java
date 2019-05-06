@@ -1,5 +1,19 @@
 package com.zetcode;
 
+/*
+ * # = wall
+ * . = nest
+ * $ = egg
+ * @ = bird
+ * * = egg in nest
+ * + = bird in nest
+ * empty space = empty field
+ * 
+ * The nest is my version of the target-place
+ * The egg is my version of the baggage/box
+ * The bird is the player-character.
+ */
+
 public class Levels
 {
 	public static String LEVEL_0 = "  ###\n"
