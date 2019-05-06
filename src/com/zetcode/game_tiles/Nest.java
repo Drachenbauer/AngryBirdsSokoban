@@ -5,6 +5,8 @@ import javax.swing.ImageIcon;
 
 public class Nest extends Tile
 {
+	ImageIcon iicon_nest = new ImageIcon("src/resources/nest.png");
+	
     public Nest(int x, int y)
     {
         super(x, y);
@@ -14,8 +16,8 @@ public class Nest extends Tile
     
     private void initNest()
     {
-        ImageIcon iicon = new ImageIcon("src/resources/nest.png");
-        Image image = iicon.getImage();
+        
+        Image image = iicon_nest.getImage();
         setImage(image);
     }
 }

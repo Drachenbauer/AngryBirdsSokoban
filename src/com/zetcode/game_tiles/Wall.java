@@ -5,10 +5,10 @@ import javax.swing.ImageIcon;
 
 public class Wall extends Tile
 {
-	ImageIcon iicon1 = new ImageIcon("src/resources/brick_wall.png");
-	ImageIcon iicon2 = new ImageIcon("src/resources/ice_wall.png");
-    ImageIcon iicon3 = new ImageIcon("src/resources/stone_wall.png");
-    ImageIcon iicon4 = new ImageIcon("src/resources/wood_wall.png");
+	ImageIcon iicon_brick_wall = new ImageIcon("src/resources/brick_wall.png");
+	ImageIcon iicon_ice_wall = new ImageIcon("src/resources/ice_wall.png");
+    ImageIcon iicon_stone_wall = new ImageIcon("src/resources/stone_wall.png");
+    ImageIcon iicon_wood_wall = new ImageIcon("src/resources/wood_wall.png");
 	
 	private Image image;
     
@@ -21,31 +21,31 @@ public class Wall extends Tile
     
     private void initWall()
     {
-        image = iicon1.getImage();
+        image = iicon_brick_wall.getImage();
         setImage(image);
     }
     
     public void changeWallBrick()
     {
-        image = iicon1.getImage();
+        image = iicon_brick_wall.getImage();
         setImage(image);
     }
     
     public void changeWallIce()
     {
-        image = iicon2.getImage();
+        image = iicon_ice_wall.getImage();
         setImage(image);
     }
     
     public void changeWallStone()
     {
-        image = iicon3.getImage();
+        image = iicon_stone_wall.getImage();
         setImage(image);
     }
     
     public void changeWallWood()
     {
-        image = iicon4.getImage();
+        image = iicon_wood_wall.getImage();
         setImage(image);
     }
 }
