@@ -33,8 +33,8 @@ public class Board extends JPanel
     private ArrayList<Egg> eggs;
     private Player bird;
     
-    public final int WIDTH = 1088; // fits up to 32 level-tiles + 2 x OFFSET
-    public final int HIGHT = 704;  // fits up to 20 level-tiles + 2 x OFFSET
+    private final int WIDTH = 1088; // fits up to 32 level-tiles + 2 x OFFSET
+    private final int HIGHT = 704;  // fits up to 20 level-tiles + 2 x OFFSET
     
     private int finishedEggs;
     private int nOfEggs;
@@ -215,6 +215,7 @@ public class Board extends JPanel
                 
                 isMoving = true;
                 bird.savePos();
+                
                 bird.move(-SPACE / 4, 0);
                 bird.hopLeft();
                 repaint();
@@ -244,9 +245,18 @@ public class Board extends JPanel
     								{
     									bird.move(-SPACE / 4, 0);
     						            bird.turnLeft();
-    						            steps++;
-    						            isMoving = false;
     						            repaint();
+    						            
+    						            timer.schedule(new TimerTask()
+    	    				    		{
+    	    								@Override
+    	    								public void run()
+    	    								{
+    	    						            steps++;
+    	    						            isMoving = false;
+    	    						            repaint();
+    	    								}
+    	    				    	    }, 100);
     								}
     				    	    }, 100);
     						}
@@ -279,6 +289,7 @@ public class Board extends JPanel
                 
                 isMoving = true;
                 bird.savePos();
+                
                 bird.move(SPACE / 4, 0);
                 bird.hopRight();
                 repaint();
@@ -308,9 +319,18 @@ public class Board extends JPanel
     								{
     									bird.move(SPACE / 4, 0);
     						            bird.turnRight();
-    						            steps++;
-    						            isMoving = false;
     						            repaint();
+    						            
+    						            timer.schedule(new TimerTask()
+    	    				    		{
+    	    								@Override
+    	    								public void run()
+    	    								{
+    	    						            steps++;
+    	    						            isMoving = false;
+    	    						            repaint();
+    	    								}
+    	    				    	    }, 100);
     								}
     				    	    }, 100);
     						}
@@ -343,6 +363,7 @@ public class Board extends JPanel
                 
                 isMoving = true;
                 bird.savePos();
+                
                 bird.move(0, -SPACE / 4);
                 bird.hopUp();
                 repaint();
@@ -372,9 +393,18 @@ public class Board extends JPanel
     								{
     									bird.move(0, -SPACE / 4);
     						            bird.turnUp();
-    						            steps++;
-    						            isMoving = false;
     						            repaint();
+    						            
+    						            timer.schedule(new TimerTask()
+    	    				    		{
+    	    								@Override
+    	    								public void run()
+    	    								{
+    	    						            steps++;
+    	    						            isMoving = false;
+    	    						            repaint();
+    	    								}
+    	    				    	    }, 100);
     								}
     				    	    }, 100);
     						}
@@ -407,6 +437,7 @@ public class Board extends JPanel
                 
                 isMoving = true;
                 bird.savePos();
+                
                 bird.move(0, SPACE / 4);
                 bird.hopDown();
                 repaint();
@@ -436,9 +467,18 @@ public class Board extends JPanel
     								{
     									bird.move(0, SPACE / 4);
     						            bird.turnDown();
-    						            steps++;
-    						            isMoving = false;
     						            repaint();
+    						            
+    						            timer.schedule(new TimerTask()
+    	    				    		{
+    	    								@Override
+    	    								public void run()
+    	    								{
+    	    						            steps++;
+    	    						            isMoving = false;
+    	    						            repaint();
+    	    								}
+    	    				    	    }, 100);
     								}
     				    	    }, 100);
     						}
@@ -663,6 +703,7 @@ public class Board extends JPanel
                     
                     egg.setImage1();
                     egg.savePos();
+                    
                     egg.move(-SPACE / 4, 0);
                     repaint();
                     
@@ -688,8 +729,9 @@ public class Board extends JPanel
         								public void run()
         								{
         									egg.move(-SPACE / 4, 0);
-        									isCompleted();
         						            repaint();
+        						            
+        						            isCompleted();
         								}
         				    	    }, 100);
         						}
@@ -725,6 +767,7 @@ public class Board extends JPanel
                     
                     egg.setImage1();
                     egg.savePos();
+                    
                     egg.move(SPACE / 4, 0);
                     repaint();
                     
@@ -750,8 +793,9 @@ public class Board extends JPanel
         								public void run()
         								{
         									egg.move(SPACE / 4, 0);
-        									isCompleted();
         						            repaint();
+        						            
+        						            isCompleted();
         								}
         				    	    }, 100);
         						}
@@ -787,6 +831,7 @@ public class Board extends JPanel
                     
                     egg.setImage1();
                     egg.savePos();
+                    
                     egg.move(0, -SPACE / 4);
                     repaint();
                     
@@ -812,8 +857,9 @@ public class Board extends JPanel
         								public void run()
         								{
         									egg.move(0, -SPACE / 4);
+        									repaint();
+        									
         									isCompleted();
-        						            repaint();
         								}
         				    	    }, 100);
         						}
@@ -849,6 +895,7 @@ public class Board extends JPanel
                     
                     egg.setImage1();
                     egg.savePos();
+                    
                     egg.move(0, SPACE / 4);
                     repaint();
                     
@@ -874,8 +921,9 @@ public class Board extends JPanel
         								public void run()
         								{
         									egg.move(0, SPACE / 4);
-        									isCompleted();
         						            repaint();
+        						            
+        						            isCompleted();
         								}
         				    	    }, 100);
         						}
