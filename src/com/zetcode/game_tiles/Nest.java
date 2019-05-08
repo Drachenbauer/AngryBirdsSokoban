@@ -1,6 +1,5 @@
 package com.zetcode.game_tiles;
 
-import java.awt.Image;
 import javax.swing.ImageIcon;
 
 public class Nest extends Tile
@@ -16,8 +15,6 @@ public class Nest extends Tile
     
     private void initNest()
     {
-        
-        Image image = iicon_nest.getImage();
-        setImage(image);
+        setImage(iicon_nest);
     }
 }

@@ -154,7 +154,7 @@ public class Board extends JPanel
         
         for (Tile tile : world)
         {
-            g.drawImage(tile.getImage(), tile.x(), tile.y(), this);    
+            g.drawImage(tile.image, tile.x(), tile.y(), this);    
         }
         
         g.setColor(new Color(255, 255, 0));
@@ -201,14 +201,14 @@ public class Board extends JPanel
                 
                 if (checkWallCollision(bird, LEFT_COLLISION))
                 {
-                	bird.turnLeft();
+                	bird.setImage(bird.iicon_bird_left);
                 	repaint();
                     return;
                 }
                 
                 if (checkEggCollision(LEFT_COLLISION))
                 {
-                	bird.turnLeft();
+                	bird.setImage(bird.iicon_bird_left);
                 	repaint();
                     return;
                 }
@@ -217,7 +217,7 @@ public class Board extends JPanel
                 bird.savePos();
                 
                 bird.move(-SPACE / 4, 0);
-                bird.hopLeft();
+                bird.setImage(bird.iicon_bird_hop_left);
                 repaint();
                 
         		timer.schedule(new TimerTask()
@@ -226,7 +226,7 @@ public class Board extends JPanel
     				public void run()
     				{
     					bird.move(-SPACE / 4, 0);
-    		            bird.turnLeft();
+    					bird.setImage(bird.iicon_bird_left);
     		            repaint();
     		            
     		    		timer.schedule(new TimerTask()
@@ -235,7 +235,7 @@ public class Board extends JPanel
     						public void run()
     						{
     							bird.move(-SPACE / 4, 0);
-    				            bird.hopLeft();
+    							bird.setImage(bird.iicon_bird_hop_left);
     				            repaint();
     				            
     				    		timer.schedule(new TimerTask()
@@ -244,7 +244,7 @@ public class Board extends JPanel
     								public void run()
     								{
     									bird.move(-SPACE / 4, 0);
-    						            bird.turnLeft();
+    									bird.setImage(bird.iicon_bird_left);
     						            repaint();
     						            
     						            timer.schedule(new TimerTask()
@@ -275,14 +275,14 @@ public class Board extends JPanel
                 
                 if (checkWallCollision(bird, RIGHT_COLLISION))
                 {
-                	bird.turnRight();
+                	bird.setImage(bird.iicon_bird_right);
                 	repaint();
                     return;
                 }
                 
                 if (checkEggCollision(RIGHT_COLLISION))
                 {
-                	bird.turnRight();
+                	bird.setImage(bird.iicon_bird_right);
                 	repaint();
                     return;
                 }
@@ -291,7 +291,7 @@ public class Board extends JPanel
                 bird.savePos();
                 
                 bird.move(SPACE / 4, 0);
-                bird.hopRight();
+                bird.setImage(bird.iicon_bird_hop_right);
                 repaint();
                 
         		timer.schedule(new TimerTask()
@@ -300,7 +300,7 @@ public class Board extends JPanel
     				public void run()
     				{
     					bird.move(SPACE / 4, 0);
-    		            bird.turnRight();
+    					bird.setImage(bird.iicon_bird_right);
     		            repaint();
     		            
     		    		timer.schedule(new TimerTask()
@@ -309,7 +309,7 @@ public class Board extends JPanel
     						public void run()
     						{
     							bird.move(SPACE / 4, 0);
-    				            bird.hopRight();
+    							bird.setImage(bird.iicon_bird_hop_right);
     				            repaint();
     				            
     				    		timer.schedule(new TimerTask()
@@ -318,7 +318,7 @@ public class Board extends JPanel
     								public void run()
     								{
     									bird.move(SPACE / 4, 0);
-    						            bird.turnRight();
+    									bird.setImage(bird.iicon_bird_right);
     						            repaint();
     						            
     						            timer.schedule(new TimerTask()
@@ -349,14 +349,14 @@ public class Board extends JPanel
                 
                 if (checkWallCollision(bird, TOP_COLLISION))
                 {
-                	bird.turnUp();
+                	bird.setImage(bird.iicon_bird_up);
                 	repaint();
                     return;
                 }
                 
                 if (checkEggCollision(TOP_COLLISION))
                 {
-                	bird.turnUp();
+                	bird.setImage(bird.iicon_bird_up);
                 	repaint();
                     return;
                 }
@@ -365,7 +365,7 @@ public class Board extends JPanel
                 bird.savePos();
                 
                 bird.move(0, -SPACE / 4);
-                bird.hopUp();
+                bird.setImage(bird.iicon_bird_hop_up);
                 repaint();
                 
         		timer.schedule(new TimerTask()
@@ -374,7 +374,7 @@ public class Board extends JPanel
     				public void run()
     				{
     					bird.move(0, -SPACE / 4);
-    		            bird.turnUp();
+    					bird.setImage(bird.iicon_bird_up);
     		            repaint();
     		            
     		    		timer.schedule(new TimerTask()
@@ -383,7 +383,7 @@ public class Board extends JPanel
     						public void run()
     						{
     							bird.move(0, -SPACE / 4);
-    				            bird.hopUp();
+    							bird.setImage(bird.iicon_bird_hop_up);
     				            repaint();
     				            
     				    		timer.schedule(new TimerTask()
@@ -392,7 +392,7 @@ public class Board extends JPanel
     								public void run()
     								{
     									bird.move(0, -SPACE / 4);
-    						            bird.turnUp();
+    									bird.setImage(bird.iicon_bird_up);
     						            repaint();
     						            
     						            timer.schedule(new TimerTask()
@@ -423,14 +423,14 @@ public class Board extends JPanel
                 
                 if (checkWallCollision(bird, BOTTOM_COLLISION))
                 {
-                	bird.turnDown();
+                	bird.setImage(bird.iicon_bird_down);
                 	repaint();
                     return;
                 }
                 
                 if (checkEggCollision(BOTTOM_COLLISION))
                 {
-                	bird.turnDown();
+                	bird.setImage(bird.iicon_bird_down);
                 	repaint();
                     return;
                 }
@@ -439,7 +439,7 @@ public class Board extends JPanel
                 bird.savePos();
                 
                 bird.move(0, SPACE / 4);
-                bird.hopDown();
+                bird.setImage(bird.iicon_bird_hop_down);
                 repaint();
                 
         		timer.schedule(new TimerTask()
@@ -448,7 +448,7 @@ public class Board extends JPanel
     				public void run()
     				{
     					bird.move(0, SPACE / 4);
-    		            bird.turnDown();
+    					bird.setImage(bird.iicon_bird_down);
     		            repaint();
     		            
     		    		timer.schedule(new TimerTask()
@@ -457,7 +457,7 @@ public class Board extends JPanel
     						public void run()
     						{
     							bird.move(0, SPACE / 4);
-    				            bird.hopDown();
+    							bird.setImage(bird.iicon_bird_hop_down);
     				            repaint();
     				            
     				    		timer.schedule(new TimerTask()
@@ -466,7 +466,7 @@ public class Board extends JPanel
     								public void run()
     								{
     									bird.move(0, SPACE / 4);
-    						            bird.turnDown();
+    									bird.setImage(bird.iicon_bird_down);
     						            repaint();
     						            
     						            timer.schedule(new TimerTask()
@@ -576,7 +576,7 @@ public class Board extends JPanel
                 
                 for(Wall wall : walls)
                 {
-                    wall.changeWallBrick();
+                    wall.setImage(wall.iicon_brick_wall);
                 }
                 
                 break;
@@ -585,7 +585,7 @@ public class Board extends JPanel
                 
                 for(Wall wall : walls)
                 {
-                    wall.changeWallIce();
+                	wall.setImage(wall.iicon_ice_wall);
                 }
                 
                 break;
@@ -594,7 +594,7 @@ public class Board extends JPanel
                 
                 for (Wall wall : walls)
                 {
-                    wall.changeWallStone();
+                	wall.setImage(wall.iicon_stone_wall);
                 }
                 
                 break;
@@ -603,7 +603,7 @@ public class Board extends JPanel
                 
                 for (Wall wall : walls)
                 {
-                    wall.changeWallWood();
+                	wall.setImage(wall.iicon_wood_wall);
                 }
                 
                 break;
@@ -701,7 +701,7 @@ public class Board extends JPanel
                         }
                     }
                     
-                    egg.setImage1();
+                    egg.setImage(egg.iicon_egg_1);
                     egg.savePos();
                     
                     egg.move(-SPACE / 4, 0);
@@ -765,7 +765,7 @@ public class Board extends JPanel
                         }
                     }
                     
-                    egg.setImage1();
+                    egg.setImage(egg.iicon_egg_1);
                     egg.savePos();
                     
                     egg.move(SPACE / 4, 0);
@@ -829,7 +829,7 @@ public class Board extends JPanel
                         }
                     }
                     
-                    egg.setImage1();
+                    egg.setImage(egg.iicon_egg_1);
                     egg.savePos();
                     
                     egg.move(0, -SPACE / 4);
@@ -893,7 +893,7 @@ public class Board extends JPanel
                         }
                     }
                     
-                    egg.setImage1();
+                    egg.setImage(egg.iicon_egg_1);
                     egg.savePos();
                     
                     egg.move(0, SPACE / 4);
@@ -954,7 +954,7 @@ public class Board extends JPanel
                 if (egg.x() == nest.x() && egg.y() == nest.y())
                 {
                     finishedEggs++;
-                    egg.setImage2();
+                    egg.setImage(egg.iicon_egg_2);
                 }
             }
         }

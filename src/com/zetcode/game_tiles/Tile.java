@@ -2,26 +2,18 @@ package com.zetcode.game_tiles;
 
 import java.awt.Image;
 
+import javax.swing.ImageIcon;
+
 public class Tile
 {
     private int x;
     private int y;
-    private Image image;
+    public Image image;
 
     public Tile(int x, int y)
     {    
         this.x = x;
         this.y = y;
-    }
-
-    public Image getImage()
-    {
-        return image;
-    }
-
-    public void setImage(Image img)
-    {
-        image = img;
     }
 
     public int x()
@@ -42,5 +34,10 @@ public class Tile
     public void setY(int y)
     {    
         this.y = y;
+    }
+    
+    public void setImage(ImageIcon iicon)
+    {
+        image = iicon.getImage();
     }
 }
