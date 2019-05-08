@@ -1,6 +1,5 @@
 package com.zetcode.game_tiles;
 
-import java.awt.Image;
 import javax.swing.ImageIcon;
 
 public class Wall extends Tile
