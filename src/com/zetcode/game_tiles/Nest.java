@@ -10,11 +10,6 @@ public class Nest extends Tile
     {
         super(x, y);
         
-        initNest();
-    }
-    
-    private void initNest()
-    {
         setImage(iicon_nest);
     }
 }

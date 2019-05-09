@@ -11,11 +11,6 @@ public class Egg extends Movable
     {
         super(x, y);
         
-        initEgg();
-    }
-    
-    private void initEgg()
-    {
         setImage(iicon_egg_1);
     }
 }

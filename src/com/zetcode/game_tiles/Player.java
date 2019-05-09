@@ -18,11 +18,6 @@ public class Player extends Movable
     {
         super(x, y);
 
-        initPlayer();
-    }
-
-    private void initPlayer()
-    {
         setImage(iicon_bird_down);
     }
 }

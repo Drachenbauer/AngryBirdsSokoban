@@ -13,11 +13,6 @@ public class Wall extends Tile
     {
         super(x, y);
         
-        initWall();
-    }
-    
-    private void initWall()
-    {
         setImage(iicon_brick_wall);
     }
 }
