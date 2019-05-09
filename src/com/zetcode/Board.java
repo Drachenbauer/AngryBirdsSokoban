@@ -51,11 +51,6 @@ public class Board extends JPanel
     
     public Board()
     {
-        initBoard();
-    }
-    
-    private void initBoard()
-    {
     	setPreferredSize(new Dimension(WIDTH, HIGHT));
     	setFocusable(true);
     	
