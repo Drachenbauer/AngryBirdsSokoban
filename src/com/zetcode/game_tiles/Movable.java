@@ -43,23 +43,23 @@ public class Movable extends Tile
 	    setY(old_y);
 	}
 	
-	public boolean isLeftCollision(Tile actor)
+	public boolean isLeftCollision(Tile tile)
 	{    
-	    return x() - SPACE == actor.x() && y() == actor.y();
+	    return x() - SPACE == tile.x() && y() == tile.y();
 	}
     
-	public boolean isRightCollision(Tile actor)
+	public boolean isRightCollision(Tile tile)
 	{    
-	    return x() + SPACE == actor.x() && y() == actor.y();
+	    return x() + SPACE == tile.x() && y() == tile.y();
 	}
     
-	public boolean isTopCollision(Tile actor)
+	public boolean isTopCollision(Tile tile)
 	{    
-	    return y() - SPACE == actor.y() && x() == actor.x();
+	    return y() - SPACE == tile.y() && x() == tile.x();
 	}
     
-	public boolean isBottomCollision(Tile actor)
+	public boolean isBottomCollision(Tile tile)
 	{    
-	    return y() + SPACE == actor.y() && x() == actor.x();
+	    return y() + SPACE == tile.y() && x() == tile.x();
 	}
 }
