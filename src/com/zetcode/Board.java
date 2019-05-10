@@ -571,7 +571,14 @@ public class Board extends JPanel
                 
                 for(Wall wall : walls)
                 {
-                    wall.setImage(wall.iicon_brick_wall);
+                	if (wall.image == wall.iicon_brick_wall_1.getImage())
+                	{
+                        wall.setImage(wall.iicon_brick_wall_2);
+                	}
+                	else
+                	{
+                		wall.setImage(wall.iicon_brick_wall_1);
+                	}
                 }
                 
                 break;
@@ -580,7 +587,14 @@ public class Board extends JPanel
                 
                 for(Wall wall : walls)
                 {
-                	wall.setImage(wall.iicon_ice_wall);
+                	if (wall.image == wall.iicon_ice_wall_1.getImage())
+                	{
+                        wall.setImage(wall.iicon_ice_wall_2);
+                	}
+                	else
+                	{
+                		wall.setImage(wall.iicon_ice_wall_1);
+                	}
                 }
                 
                 break;
@@ -589,7 +603,14 @@ public class Board extends JPanel
                 
                 for (Wall wall : walls)
                 {
-                	wall.setImage(wall.iicon_stone_wall);
+                	if (wall.image == wall.iicon_stone_wall_1.getImage())
+                	{
+                        wall.setImage(wall.iicon_stone_wall_2);
+                	}
+                	else
+                	{
+                		wall.setImage(wall.iicon_stone_wall_1);
+                	}
                 }
                 
                 break;
@@ -598,7 +619,14 @@ public class Board extends JPanel
                 
                 for (Wall wall : walls)
                 {
-                	wall.setImage(wall.iicon_wood_wall);
+                	if (wall.image == wall.iicon_wood_wall_1.getImage())
+                	{
+                        wall.setImage(wall.iicon_wood_wall_2);
+                	}
+                	else
+                	{
+                		wall.setImage(wall.iicon_wood_wall_1);
+                	}
                 }
                 
                 break;
