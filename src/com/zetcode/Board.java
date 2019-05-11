@@ -248,8 +248,8 @@ public class Board extends JPanel
     	    								public void run()
     	    								{
     	    						            steps++;
-    	    						            isMoving = false;
     	    						            repaint();
+    	    						            isMoving = false;
     	    								}
     	    				    	    }, 100);
     								}
@@ -322,8 +322,8 @@ public class Board extends JPanel
     	    								public void run()
     	    								{
     	    						            steps++;
-    	    						            isMoving = false;
     	    						            repaint();
+    	    						            isMoving = false;
     	    								}
     	    				    	    }, 100);
     								}
@@ -396,8 +396,8 @@ public class Board extends JPanel
     	    								public void run()
     	    								{
     	    						            steps++;
-    	    						            isMoving = false;
     	    						            repaint();
+    	    						            isMoving = false;
     	    								}
     	    				    	    }, 100);
     								}
@@ -470,8 +470,8 @@ public class Board extends JPanel
     	    								public void run()
     	    								{
     	    						            steps++;
-    	    						            isMoving = false;
     	    						            repaint();
+    	    						            isMoving = false;
     	    								}
     	    				    	    }, 100);
     								}
