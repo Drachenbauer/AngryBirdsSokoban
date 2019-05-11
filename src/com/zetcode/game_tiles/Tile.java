@@ -6,24 +6,14 @@ import javax.swing.ImageIcon;
 
 public class Tile
 {
-    private int x;
-    private int y;
+    public int x;
+    public int y;
     public Image image;
 
     public Tile(int x, int y)
     {    
         this.x = x;
         this.y = y;
-    }
-
-    public int x()
-    {    
-        return x;
-    }
-
-    public int y()
-    {    
-        return y;
     }
 
     public void setX(int x)

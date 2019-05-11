@@ -149,7 +149,7 @@ public class Board extends JPanel
         
         for (Tile tile : world)
         {
-            g.drawImage(tile.image, tile.x(), tile.y(), this);    
+            g.drawImage(tile.image, tile.x, tile.y, this);    
         }
         
         g.setColor(new Color(255, 255, 0));
@@ -974,7 +974,7 @@ public class Board extends JPanel
         {
             for (Nest nest: nests)
             {
-                if (egg.x() == nest.x() && egg.y() == nest.y())
+                if (egg.x == nest.x && egg.y == nest.y)
                 {
                     finishedEggs++;
                     egg.setImage(egg.iicon_egg_2);

@@ -21,10 +21,8 @@ public class Movable extends Tile
     
 	public void move(int x, int y)
 	{
-		
-		
-	    dx = x() + x;
-	    dy = y() + y;
+	    dx = this.x + x;
+	    dy = this.y + y;
 	        
 	    setX(dx);
 	    setY(dy);
@@ -45,21 +43,21 @@ public class Movable extends Tile
 	
 	public boolean isLeftCollision(Tile tile)
 	{    
-	    return x() - SPACE == tile.x() && y() == tile.y();
+	    return x - SPACE == tile.x && y == tile.y;
 	}
     
 	public boolean isRightCollision(Tile tile)
 	{    
-	    return x() + SPACE == tile.x() && y() == tile.y();
+	    return x + SPACE == tile.x && y == tile.y;
 	}
     
 	public boolean isTopCollision(Tile tile)
 	{    
-	    return y() - SPACE == tile.y() && x() == tile.x();
+	    return x == tile.x && y - SPACE == tile.y;
 	}
     
 	public boolean isBottomCollision(Tile tile)
 	{    
-	    return y() + SPACE == tile.y() && x() == tile.x();
+	    return x == tile.x && y + SPACE == tile.y;
 	}
 }
