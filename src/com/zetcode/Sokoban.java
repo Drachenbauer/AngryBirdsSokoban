@@ -5,8 +5,6 @@ import java.awt.EventQueue;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
-import com.sun.javafx.tk.Toolkit;
-
 @SuppressWarnings("serial")
 public class Sokoban extends JFrame
 {
