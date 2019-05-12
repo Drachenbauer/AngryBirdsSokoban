@@ -37,7 +37,7 @@ You can´t push more than one egg with one move.
 If you try to push two or more eggs in a row, your bird doesn´t move.
 
 backspace-key:  
-Undo moves.
+Undo moves.  
 You can undo all moves you made so far in the level.
 
 R-key:  
