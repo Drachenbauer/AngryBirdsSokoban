@@ -22,7 +22,7 @@ import com.zetcode.game_tiles.Wall;
 public class Board extends JPanel
 {
     private final int OFFSET = 32;
-    private final int SPACE = 32;
+    public final static int SPACE = 32;
     private final int LEFT_COLLISION = 1;
     private final int RIGHT_COLLISION = 2;
     private final int TOP_COLLISION = 3;
@@ -39,7 +39,7 @@ public class Board extends JPanel
     private int finishedEggs;
     private int nOfEggs;
         
-    private int steps = 0;
+    private int moves = 0;
     
     private boolean isCompleted = false;
     private boolean isMoving = false;
@@ -154,7 +154,7 @@ public class Board extends JPanel
         
         g.setColor(new Color(255, 255, 0));
         g.drawString("" + finishedEggs + " of " + nOfEggs + " eggs solved", 304, 16);
-        g.drawString("" + steps + " steps moved", 816, 16);
+        g.drawString("" + moves + " moves used", 816, 16);
         
         if (isCompleted)
         {    
@@ -209,6 +209,9 @@ public class Board extends JPanel
                 }
                 
                 isMoving = true;
+                
+                moveEggs(LEFT_COLLISION);
+                
                 bird.savePos();
                 
                 bird.move(-SPACE / 4, 0);
@@ -247,7 +250,7 @@ public class Board extends JPanel
     	    								@Override
     	    								public void run()
     	    								{
-    	    						            steps++;
+    	    						            moves++;
     	    						            repaint();
     	    						            isMoving = false;
     	    								}
@@ -283,6 +286,9 @@ public class Board extends JPanel
                 }
                 
                 isMoving = true;
+                
+                moveEggs(RIGHT_COLLISION);
+                
                 bird.savePos();
                 
                 bird.move(SPACE / 4, 0);
@@ -321,7 +327,7 @@ public class Board extends JPanel
     	    								@Override
     	    								public void run()
     	    								{
-    	    						            steps++;
+    	    						            moves++;
     	    						            repaint();
     	    						            isMoving = false;
     	    								}
@@ -357,6 +363,9 @@ public class Board extends JPanel
                 }
                 
                 isMoving = true;
+                
+                moveEggs(TOP_COLLISION);
+                
                 bird.savePos();
                 
                 bird.move(0, -SPACE / 4);
@@ -395,7 +404,7 @@ public class Board extends JPanel
     	    								@Override
     	    								public void run()
     	    								{
-    	    						            steps++;
+    	    						            moves++;
     	    						            repaint();
     	    						            isMoving = false;
     	    								}
@@ -431,6 +440,9 @@ public class Board extends JPanel
                 }
                 
                 isMoving = true;
+                
+                moveEggs(BOTTOM_COLLISION);
+                
                 bird.savePos();
                 
                 bird.move(0, SPACE / 4);
@@ -469,7 +481,7 @@ public class Board extends JPanel
     	    								@Override
     	    								public void run()
     	    								{
-    	    						            steps++;
+    	    						            moves++;
     	    						            repaint();
     	    						            isMoving = false;
     	    								}
@@ -483,26 +495,26 @@ public class Board extends JPanel
                 
                 break;
                 
-                
-                
                 case KeyEvent.VK_BACK_SPACE:
                 
-                if (bird.isMoved)
+                if (isCompleted)
                 {
-                	bird.undoStep();
-                	steps--;
+                    return;
+                }
+                
+                if (moves > 0)
+                {
+                	bird.undoMove();
                 	
                 	for (Egg egg : eggs)
                 	{
-                		if (egg.isMoved)
-                		{
-                			egg.undoStep();
-                			isCompleted();
-                			egg.isMoved = false;
-                		}
+                		egg.setImage(egg.iicon_egg_1);
+                		
+                		egg.undoMove();
                 	}
                 	
-                	bird.isMoved = false;
+                	moves--;
+                	isCompleted();
                 }
                 
                 break;
@@ -723,44 +735,6 @@ public class Board extends JPanel
                             return true;
                         }
                     }
-                    
-                    egg1.setImage(egg1.iicon_egg_1);
-                    egg1.savePos();
-                    
-                    egg1.move(-SPACE / 4, 0);
-                    repaint();
-                    
-            		timer.schedule(new TimerTask()
-            		{
-        				@Override
-        				public void run()
-        				{
-        					egg1.move(-SPACE / 4, 0);
-        		            repaint();
-        		            
-        		    		timer.schedule(new TimerTask()
-        		    		{
-        						@Override
-        						public void run()
-        						{
-        							egg1.move(-SPACE / 4, 0);
-        				            repaint();
-        				            
-        				    		timer.schedule(new TimerTask()
-        				    		{
-        								@Override
-        								public void run()
-        								{
-        									egg1.move(-SPACE / 4, 0);
-        						            repaint();
-        						            
-        						            isCompleted();
-        								}
-        				    	    }, 100);
-        						}
-        		    	    }, 100);
-        				}
-            	    }, 100);
                 }
             }
             
@@ -787,44 +761,6 @@ public class Board extends JPanel
                             return true;
                         }
                     }
-                    
-                    egg1.setImage(egg1.iicon_egg_1);
-                    egg1.savePos();
-                    
-                    egg1.move(SPACE / 4, 0);
-                    repaint();
-                    
-            		timer.schedule(new TimerTask()
-            		{
-        				@Override
-        				public void run()
-        				{
-        					egg1.move(SPACE / 4, 0);
-        		            repaint();
-        		            
-        		    		timer.schedule(new TimerTask()
-        		    		{
-        						@Override
-        						public void run()
-        						{
-        							egg1.move(SPACE / 4, 0);
-        				            repaint();
-        				            
-        				    		timer.schedule(new TimerTask()
-        				    		{
-        								@Override
-        								public void run()
-        								{
-        									egg1.move(SPACE / 4, 0);
-        						            repaint();
-        						            
-        						            isCompleted();
-        								}
-        				    	    }, 100);
-        						}
-        		    	    }, 100);
-        				}
-            	    }, 100);
                 }
             }
             
@@ -851,44 +787,6 @@ public class Board extends JPanel
                             return true;
                         }
                     }
-                    
-                    egg1.setImage(egg1.iicon_egg_1);
-                    egg1.savePos();
-                    
-                    egg1.move(0, -SPACE / 4);
-                    repaint();
-                    
-            		timer.schedule(new TimerTask()
-            		{
-        				@Override
-        				public void run()
-        				{
-        					egg1.move(0, -SPACE / 4);
-        		            repaint();
-        		            
-        		    		timer.schedule(new TimerTask()
-        		    		{
-        						@Override
-        						public void run()
-        						{
-        							egg1.move(0, -SPACE / 4);
-        				            repaint();
-        				            
-        				    		timer.schedule(new TimerTask()
-        				    		{
-        								@Override
-        								public void run()
-        								{
-        									egg1.move(0, -SPACE / 4);
-        									repaint();
-        									
-        									isCompleted();
-        								}
-        				    	    }, 100);
-        						}
-        		    	    }, 100);
-        				}
-            	    }, 100);
                 }
             }
 
@@ -915,11 +813,82 @@ public class Board extends JPanel
                             return true;
                         }
                     }
+                }
+            }
+            
+            return false;
+            
+            default:
+            break;
+        }
+        
+        return false;
+    }
+    
+    private void moveEggs(int type)
+    {	
+    	switch (type)
+        {
+            case LEFT_COLLISION:
+            
+            for (Egg egg : eggs)
+            {	
+            	egg.savePos();
+            	
+                if (bird.isLeftCollision(egg))
+                {
+                    egg.setImage(egg.iicon_egg_1);
                     
-                    egg1.setImage(egg1.iicon_egg_1);
-                    egg1.savePos();
+                    egg.move(-SPACE / 4, 0);
+                    repaint();
                     
-                    egg1.move(0, SPACE / 4);
+                    timer.schedule(new TimerTask()
+        	        {
+    			        @Override
+    			        public void run()
+    			        {
+    				        egg.move(-SPACE / 4, 0);
+    		                repaint();
+    		                
+    		    	        timer.schedule(new TimerTask()
+    		    	        {
+    					        @Override
+    					        public void run()
+    					        {
+    						        egg.move(-SPACE / 4, 0);
+    				                repaint();
+    				                
+    				    	        timer.schedule(new TimerTask()
+    				    	        {
+    							        @Override
+    							        public void run()
+    							        {
+    								        egg.move(-SPACE / 4, 0);
+    						                repaint();
+    						                
+    						                isCompleted();
+    						            }
+    				    	        }, 100);
+    					        }
+    		    	        }, 100);
+    			        }
+        	        }, 100);
+                }
+            }
+            
+            break;
+            
+            case RIGHT_COLLISION:
+            
+            for (Egg egg : eggs)
+            {	
+            	egg.savePos();
+            	
+                if (bird.isRightCollision(egg))
+                {
+                    egg.setImage(egg.iicon_egg_1);
+                    
+                    egg.move(SPACE / 4, 0);
                     repaint();
                     
             		timer.schedule(new TimerTask()
@@ -927,7 +896,7 @@ public class Board extends JPanel
         				@Override
         				public void run()
         				{
-        					egg1.move(0, SPACE / 4);
+        					egg.move(SPACE / 4, 0);
         		            repaint();
         		            
         		    		timer.schedule(new TimerTask()
@@ -935,7 +904,7 @@ public class Board extends JPanel
         						@Override
         						public void run()
         						{
-        							egg1.move(0, SPACE / 4);
+        							egg.move(SPACE / 4, 0);
         				            repaint();
         				            
         				    		timer.schedule(new TimerTask()
@@ -943,7 +912,7 @@ public class Board extends JPanel
         								@Override
         								public void run()
         								{
-        									egg1.move(0, SPACE / 4);
+        									egg.move(SPACE / 4, 0);
         						            repaint();
         						            
         						            isCompleted();
@@ -958,11 +927,104 @@ public class Board extends JPanel
             
             break;
             
-            default:
+            case TOP_COLLISION:
+                
+            for (Egg egg : eggs)
+            {	
+            	egg.savePos();
+            	
+                if (bird.isTopCollision(egg))
+                {
+                    egg.setImage(egg.iicon_egg_1);
+                    
+                    egg.move(0, -SPACE / 4);
+                    repaint();
+                    
+            		timer.schedule(new TimerTask()
+            		{
+        				@Override
+        				public void run()
+        				{
+        					egg.move(0, -SPACE / 4);
+        		            repaint();
+        		            
+        		    		timer.schedule(new TimerTask()
+        		    		{
+        						@Override
+        						public void run()
+        						{
+        							egg.move(0, -SPACE / 4);
+        				            repaint();
+        				            
+        				    		timer.schedule(new TimerTask()
+        				    		{
+        								@Override
+        								public void run()
+        								{
+        									egg.move(0, -SPACE / 4);
+        									repaint();
+        									
+        									isCompleted();
+        								}
+        				    	    }, 100);
+        						}
+        		    	    }, 100);
+        				}
+            	    }, 100);
+                }
+            }
+            
             break;
-        }
-        
-        return false;
+            
+            case BOTTOM_COLLISION:
+                
+            for (Egg egg : eggs)
+            {
+                egg.savePos();
+                
+                if (bird.isBottomCollision(egg))
+                {
+                	egg.setImage(egg.iicon_egg_1);
+                	
+                	egg.move(0, SPACE / 4);
+                    repaint();
+                    
+            		timer.schedule(new TimerTask()
+            		{
+        				@Override
+        				public void run()
+        				{
+        					egg.move(0, SPACE / 4);
+        		            repaint();
+        		            
+        		    		timer.schedule(new TimerTask()
+        		    		{
+        						@Override
+        						public void run()
+        						{
+        							egg.move(0, SPACE / 4);
+        				            repaint();
+        				            
+        				    		timer.schedule(new TimerTask()
+        				    		{
+        								@Override
+        								public void run()
+        								{
+        									egg.move(0, SPACE / 4);
+        						            repaint();
+        						            
+        						            isCompleted();
+        								}
+        				    	    }, 100);
+        						}
+        		    	    }, 100);
+        				}
+            	    }, 100);
+                }
+            }
+            
+            break;
+        }	
     }
     
     private void isCompleted()
@@ -985,8 +1047,8 @@ public class Board extends JPanel
         if (finishedEggs == nOfEggs)
         {
             isCompleted = true;
-            repaint();
         }
+        repaint();
     }
     
     private void restartLevel()
@@ -995,7 +1057,7 @@ public class Board extends JPanel
         nests.clear();
         eggs.clear();
         
-        steps = 0;
+        moves = 0;
         
         initWorld();
         isCompleted();

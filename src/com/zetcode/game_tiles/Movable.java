@@ -1,16 +1,17 @@
 package com.zetcode.game_tiles;
 
+import java.util.ArrayList;
+
+import com.zetcode.Board;
+
 public class Movable extends Tile
 {
-	private int old_x;
-	private int old_y;
 	
 	private int dx;
 	private int dy;
 	
-	private final int SPACE = 32;
-	
-	public boolean isMoved = false;
+	protected int[] pos = new int[2];
+	protected ArrayList<int[]> moves = new ArrayList<>();
 	
 	public Movable(int x, int y)
 	{
@@ -30,34 +31,33 @@ public class Movable extends Tile
 	
 	public void savePos()
 	{
-		isMoved = true;
-		old_x = dx;
-		old_y = dy;
+		moves.add(new int[] {x, y});
 	}
 	
-	public void undoStep ()
+	public void undoMove ()
 	{
-	    setX(old_x);
-	    setY(old_y);
+		pos = moves.get(moves.size() - 1);
+	    setX(pos[0]);
+	    setY(pos[1]);
+	    moves.remove(moves.size() - 1);
 	}
-	
 	public boolean isLeftCollision(Tile tile)
 	{    
-	    return x - SPACE == tile.x && y == tile.y;
+	    return x - Board.SPACE == tile.x && y == tile.y;
 	}
     
 	public boolean isRightCollision(Tile tile)
 	{    
-	    return x + SPACE == tile.x && y == tile.y;
+	    return x + Board.SPACE == tile.x && y == tile.y;
 	}
     
 	public boolean isTopCollision(Tile tile)
 	{    
-	    return x == tile.x && y - SPACE == tile.y;
+	    return x == tile.x && y - Board.SPACE == tile.y;
 	}
     
 	public boolean isBottomCollision(Tile tile)
 	{    
-	    return x == tile.x && y + SPACE == tile.y;
+	    return x == tile.x && y + Board.SPACE == tile.y;
 	}
 }

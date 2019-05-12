@@ -20,4 +20,32 @@ public class Player extends Movable
 
         setImage(iicon_bird_down);
     }
+    
+    @Override
+    public void undoMove()
+    {
+    	pos = moves.get(moves.size() - 1);
+    	
+    	if (pos[0] > x)
+    	{
+    		setImage(iicon_bird_left);
+    	}
+    	
+    	if (pos[0] < x)
+    	{
+    		setImage(iicon_bird_right);
+    	}
+    	
+    	if (pos[1] > y)
+    	{
+    		setImage(iicon_bird_up);
+    	}
+    	
+    	if (pos[1] < y)
+    	{
+    		setImage(iicon_bird_down);
+    	}
+    	
+    	super.undoMove();
+    }
 }
