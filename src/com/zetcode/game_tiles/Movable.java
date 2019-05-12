@@ -41,6 +41,7 @@ public class Movable extends Tile
 	    setY(pos[1]);
 	    moves.remove(moves.size() - 1);
 	}
+	
 	public boolean isLeftCollision(Tile tile)
 	{    
 	    return x - Board.SPACE == tile.x && y == tile.y;
