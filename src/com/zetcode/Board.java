@@ -22,7 +22,7 @@ import com.zetcode.game_tiles.Wall;
 public class Board extends JPanel
 {
     private final int OFFSET = 32;
-    public final static int SPACE = 32;
+    public static final int SPACE = 32;
     private final int LEFT_COLLISION = 1;
     private final int RIGHT_COLLISION = 2;
     private final int TOP_COLLISION = 3;
