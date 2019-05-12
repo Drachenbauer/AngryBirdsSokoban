@@ -827,14 +827,17 @@ public class Board extends JPanel
     
     private void moveEggs(int type)
     {	
+    	for (Egg egg : eggs)
+        {
+    		egg.savePos();
+        }
+    	
     	switch (type)
         {
             case LEFT_COLLISION:
             
             for (Egg egg : eggs)
             {	
-            	egg.savePos();
-            	
                 if (bird.isLeftCollision(egg))
                 {
                     egg.setImage(egg.iicon_egg_1);
@@ -881,9 +884,7 @@ public class Board extends JPanel
             case RIGHT_COLLISION:
             
             for (Egg egg : eggs)
-            {	
-            	egg.savePos();
-            	
+            {
                 if (bird.isRightCollision(egg))
                 {
                     egg.setImage(egg.iicon_egg_1);
@@ -930,9 +931,7 @@ public class Board extends JPanel
             case TOP_COLLISION:
                 
             for (Egg egg : eggs)
-            {	
-            	egg.savePos();
-            	
+            {
                 if (bird.isTopCollision(egg))
                 {
                     egg.setImage(egg.iicon_egg_1);
@@ -980,8 +979,6 @@ public class Board extends JPanel
                 
             for (Egg egg : eggs)
             {
-                egg.savePos();
-                
                 if (bird.isBottomCollision(egg))
                 {
                 	egg.setImage(egg.iicon_egg_1);
