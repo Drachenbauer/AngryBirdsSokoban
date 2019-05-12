@@ -25,7 +25,7 @@ code-changes:
 
 -added progress-strings to show number of solved eggs and as a step-counter
 
--added an undo-one-step-function
+-added an undo-steps-function
 
 
 Controls:
