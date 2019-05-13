@@ -779,6 +779,15 @@ public class Board extends JPanel
                 
                 break;
                 
+                case KeyEvent.VK_6:
+                
+                level = Levels.LEVEL_6;
+                level_num = "Level 6";
+                
+                restartLevel();
+                
+                break;
+                
                 case KeyEvent.VK_B:
                 
                 for(Wall wall : walls)
