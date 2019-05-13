@@ -259,9 +259,9 @@ public class Board extends JPanel
                 }
                 
                 bird.savePos();
-                
-                bird.move(-SPACE / 4, 0);
+
                 bird.setImage(bird.iicon_bird_hop_left);
+                bird.move(-SPACE / 4, 0);
                 repaint();
                 
         		timer.schedule(new TimerTask()
@@ -269,8 +269,8 @@ public class Board extends JPanel
     				@Override
     				public void run()
     				{
-    					bird.move(-SPACE / 4, 0);
     					bird.setImage(bird.iicon_bird_left);
+    					bird.move(-SPACE / 4, 0);
     		            repaint();
     		            
     		    		timer.schedule(new TimerTask()
@@ -278,8 +278,8 @@ public class Board extends JPanel
     						@Override
     						public void run()
     						{
-    							bird.move(-SPACE / 4, 0);
     							bird.setImage(bird.iicon_bird_hop_left);
+    							bird.move(-SPACE / 4, 0);
     				            repaint();
     				            
     				    		timer.schedule(new TimerTask()
@@ -287,8 +287,8 @@ public class Board extends JPanel
     								@Override
     								public void run()
     								{
-    									bird.move(-SPACE / 4, 0);
     									bird.setImage(bird.iicon_bird_left);
+    									bird.move(-SPACE / 4, 0);
     						            repaint();
     						            
     						            timer.schedule(new TimerTask()
@@ -386,9 +386,9 @@ public class Board extends JPanel
                 }
                 
                 bird.savePos();
-                
-                bird.move(SPACE / 4, 0);
+
                 bird.setImage(bird.iicon_bird_hop_right);
+                bird.move(SPACE / 4, 0);
                 repaint();
                 
         		timer.schedule(new TimerTask()
@@ -396,8 +396,8 @@ public class Board extends JPanel
     				@Override
     				public void run()
     				{
-    					bird.move(SPACE / 4, 0);
     					bird.setImage(bird.iicon_bird_right);
+    					bird.move(SPACE / 4, 0);
     		            repaint();
     		            
     		    		timer.schedule(new TimerTask()
@@ -405,8 +405,8 @@ public class Board extends JPanel
     						@Override
     						public void run()
     						{
-    							bird.move(SPACE / 4, 0);
     							bird.setImage(bird.iicon_bird_hop_right);
+    							bird.move(SPACE / 4, 0);
     				            repaint();
     				            
     				    		timer.schedule(new TimerTask()
@@ -414,8 +414,8 @@ public class Board extends JPanel
     								@Override
     								public void run()
     								{
-    									bird.move(SPACE / 4, 0);
     									bird.setImage(bird.iicon_bird_right);
+    									bird.move(SPACE / 4, 0);
     						            repaint();
     						            
     						            timer.schedule(new TimerTask()
@@ -513,9 +513,9 @@ public class Board extends JPanel
                 }
                 
                 bird.savePos();
-                
-                bird.move(0, -SPACE / 4);
+
                 bird.setImage(bird.iicon_bird_hop_up);
+                bird.move(0, -SPACE / 4);
                 repaint();
                 
         		timer.schedule(new TimerTask()
@@ -523,8 +523,8 @@ public class Board extends JPanel
     				@Override
     				public void run()
     				{
-    					bird.move(0, -SPACE / 4);
     					bird.setImage(bird.iicon_bird_up);
+    					bird.move(0, -SPACE / 4);
     		            repaint();
     		            
     		    		timer.schedule(new TimerTask()
@@ -532,8 +532,8 @@ public class Board extends JPanel
     						@Override
     						public void run()
     						{
-    							bird.move(0, -SPACE / 4);
     							bird.setImage(bird.iicon_bird_hop_up);
+    							bird.move(0, -SPACE / 4);
     				            repaint();
     				            
     				    		timer.schedule(new TimerTask()
@@ -541,8 +541,8 @@ public class Board extends JPanel
     								@Override
     								public void run()
     								{
-    									bird.move(0, -SPACE / 4);
     									bird.setImage(bird.iicon_bird_up);
+    									bird.move(0, -SPACE / 4);
     						            repaint();
     						            
     						            timer.schedule(new TimerTask()
@@ -640,9 +640,9 @@ public class Board extends JPanel
                 }
                 
                 bird.savePos();
-                
-                bird.move(0, SPACE / 4);
+
                 bird.setImage(bird.iicon_bird_hop_down);
+                bird.move(0, SPACE / 4);
                 repaint();
                 
         		timer.schedule(new TimerTask()
@@ -650,8 +650,8 @@ public class Board extends JPanel
     				@Override
     				public void run()
     				{
-    					bird.move(0, SPACE / 4);
     					bird.setImage(bird.iicon_bird_down);
+    					bird.move(0, SPACE / 4);
     		            repaint();
     		            
     		    		timer.schedule(new TimerTask()
@@ -659,8 +659,8 @@ public class Board extends JPanel
     						@Override
     						public void run()
     						{
-    							bird.move(0, SPACE / 4);
     							bird.setImage(bird.iicon_bird_hop_down);
+    							bird.move(0, SPACE / 4);
     				            repaint();
     				            
     				    		timer.schedule(new TimerTask()
@@ -668,8 +668,8 @@ public class Board extends JPanel
     								@Override
     								public void run()
     								{
-    									bird.move(0, SPACE / 4);
     									bird.setImage(bird.iicon_bird_down);
+    									bird.move(0, SPACE / 4);
     						            repaint();
     						            
     						            timer.schedule(new TimerTask()
@@ -709,7 +709,6 @@ public class Board extends JPanel
                 	for (Egg egg : eggs)
                 	{
                 		egg.setImage(egg.iicon_egg_1);
-                		
                 		egg.undoMove();
                 	}
                 	
