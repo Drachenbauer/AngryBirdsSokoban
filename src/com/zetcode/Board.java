@@ -501,11 +501,14 @@ public class Board extends JPanel
             									
             									isCompleted();
             								}
-            				    	    }, 100);
+            				    	    }
+            				    		, 100);
             						}
-            		    	    }, 100);
+            		    	    }
+            		    		, 100);
             				}
-                	    }, 100);
+                	    }
+                		, 100);
                     }
                 }
                 
@@ -625,11 +628,14 @@ public class Board extends JPanel
             						            
             						            isCompleted();
             								}
-            				    	    }, 100);
+            				    	    }
+            				    		, 100);
             						}
-            		    	    }, 100);
+            		    	    }
+            		    		, 100);
             				}
-                	    }, 100);
+                	    }
+                		, 100);
                     }
                 }
                 
