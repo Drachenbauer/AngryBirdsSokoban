@@ -3,6 +3,8 @@ package com.zetcode;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -19,7 +21,7 @@ import com.zetcode.game_tiles.Tile;
 import com.zetcode.game_tiles.Wall;
 
 @SuppressWarnings("serial")
-public class Board extends JPanel
+public class Board extends JPanel implements ActionListener
 {
     private final int OFFSET = 32;
     public static final int SPACE = 32;
@@ -44,8 +46,10 @@ public class Board extends JPanel
     private boolean isCompleted = false;
     private boolean isMoving = false;
     
-    private String level = Levels.LEVEL_0;
-    private String level_num = "Level 0";
+    private LevelDialog level_dialog = new LevelDialog("Choose Level", true);
+    private Levels levels = new Levels();
+    public String level = levels.levels.get(0);
+    public int level_number = 0;
     
     private Timer timer = new Timer();
     
@@ -55,6 +59,7 @@ public class Board extends JPanel
     	setFocusable(true);
     	
         addKeyListener(new TAdapter());
+        level_dialog.okButton.addActionListener(this);
         initWorld();
         isCompleted();
     }
@@ -162,7 +167,7 @@ public class Board extends JPanel
         }
         else
         {
-        	g.drawString(level_num, 16, 16);
+        	g.drawString("Level " + level_number, 16, 16);
         }
     }
     
@@ -724,66 +729,9 @@ public class Board extends JPanel
                 
                 break;
                 
-                case KeyEvent.VK_0:
+                case KeyEvent.VK_L:
                 
-                level = Levels.LEVEL_0;
-                level_num = "Level 0";
-                
-                restartLevel();
-                
-                break;
-                
-                case KeyEvent.VK_1:
-                
-                level = Levels.LEVEL_1;
-                level_num = "Level 1";
-                
-                restartLevel();
-                
-                break;
-                
-                case KeyEvent.VK_2:
-                
-                level = Levels.LEVEL_2;
-                level_num = "Level 2";
-                
-                restartLevel();
-                
-                break;
-                
-                case KeyEvent.VK_3:
-                
-                level = Levels.LEVEL_3;
-                level_num = "Level 3";
-                
-                restartLevel();
-                
-                break;
-                
-                case KeyEvent.VK_4:
-                
-                level = Levels.LEVEL_4;
-                level_num = "Level 4";
-                
-                restartLevel();
-                
-                break;
-                
-                case KeyEvent.VK_5:
-                
-                level = Levels.LEVEL_5;
-                level_num = "Level 5";
-                
-                restartLevel();
-                
-                break;
-                
-                case KeyEvent.VK_6:
-                
-                level = Levels.LEVEL_6;
-                level_num = "Level 6";
-                
-                restartLevel();
+                level_dialog.setVisible(true);
                 
                 break;
                 
@@ -859,6 +807,19 @@ public class Board extends JPanel
         }
     }
     
+    public void actionPerformed(ActionEvent evt)
+    {
+    	changeLevel((int)level_dialog.levelList.getSelectedItem());
+    	level_dialog.setVisible(false);
+    }
+    
+    public void changeLevel(int number)
+    {
+    	level_number = number;
+    	level = levels.levels.get(level_number);
+        restartLevel();
+    }
+    
     private boolean checkWallCollision(Movable movable, int type)
     {
         switch (type)
@@ -912,6 +873,7 @@ public class Board extends JPanel
             return false;
             
             default:
+            
             break;
         }
         
@@ -1027,6 +989,7 @@ public class Board extends JPanel
             return false;
             
             default:
+            
             break;
         }
         
@@ -1052,7 +1015,25 @@ public class Board extends JPanel
         
         if (finishedEggs == nOfEggs)
         {
-            isCompleted = true;
+        	isMoving = true;
+        	timer.schedule(new TimerTask()
+    		{
+				@Override
+				public void run()
+				{
+					if (level_number + 1 < levels.levels.size())
+		        	{
+		        		changeLevel(level_number + 1);
+		        	}
+		        	else
+		        	{
+		                isCompleted = true;
+		        	}
+					repaint();
+					isMoving = false;
+				}
+    	    }
+    		, 1000);
         }
         repaint();
     }
