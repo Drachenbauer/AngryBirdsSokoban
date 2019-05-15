@@ -17,9 +17,11 @@ And I added six wall-styles similar to the piggie-construct-materials in the off
 
 code-changes:
 
--four direction-pictures and hopping-animation for the bird (player)
+-four direction-sprites and hopping-animation for the bird (player)
 
--up to 10 levels to choose from
+-many levels to choose from by dialog
+
+-solving a level starts the next one
 
 -eight wall-styles to choose from
 
