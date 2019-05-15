@@ -60,6 +60,7 @@ public class Board extends JPanel implements ActionListener
     	
         addKeyListener(new TAdapter());
         level_dialog.okButton.addActionListener(this);
+        
         initWorld();
         isCompleted();
     }
