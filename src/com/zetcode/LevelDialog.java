@@ -2,25 +2,20 @@ package com.zetcode;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
-public class LevelDialog extends JDialog implements ActionListener
+public class LevelDialog extends JDialog
 {
 	private JLabel text;
     @SuppressWarnings("rawtypes")
 	public JComboBox levelList;
     public JButton okButton;
     private Levels levels;
-    
-    public ArrayList<Integer> list_levels = new ArrayList<>();
     
 	@SuppressWarnings({ "unchecked", "unused", "rawtypes" })
 	public LevelDialog(String title, boolean modal)
@@ -33,7 +28,7 @@ public class LevelDialog extends JDialog implements ActionListener
         setPreferredSize(new Dimension(320, 160));
         setResizable(false);
         
-    	text = new JLabel("Choose your level!");
+    	text = new JLabel("Choose your level!", SwingConstants.CENTER);
     	levelList = new JComboBox();
         okButton = new JButton("OK");
         levels = new Levels();
@@ -44,13 +39,8 @@ public class LevelDialog extends JDialog implements ActionListener
         
         for (String level: levels.levels)
         {
-        	list_levels.add (i);
+        	levelList.addItem(i);
         	i++;
-        }
-        
-        for (int level : list_levels)
-        {
-        	levelList.addItem(level);
         }
         
         add(text);
@@ -58,10 +48,4 @@ public class LevelDialog extends JDialog implements ActionListener
         add(okButton);
         pack();     
     }
-
-	@Override
-	public void actionPerformed(ActionEvent e)
-	{
-		// TODO Auto-generated method stub
-	}
 }

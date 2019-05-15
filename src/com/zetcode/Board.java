@@ -1015,25 +1015,25 @@ public class Board extends JPanel implements ActionListener
         
         if (finishedEggs == nOfEggs)
         {
-        	isMoving = true;
-        	timer.schedule(new TimerTask()
-    		{
-				@Override
-				public void run()
-				{
-					if (level_number + 1 < levels.levels.size())
-		        	{
-		        		changeLevel(level_number + 1);
-		        	}
-		        	else
-		        	{
-		                isCompleted = true;
-		        	}
-					repaint();
-					isMoving = false;
-				}
-    	    }
-    		, 1000);
+        	if (level_number + 1 < levels.levels.size())
+        	{
+        		isMoving = true;
+        		
+        		timer.schedule(new TimerTask()
+        		{
+    				@Override
+    				public void run()
+    				{
+    					changeLevel(level_number + 1);
+    					isMoving = false;
+    				}
+        	    }
+        		, 2000);
+        	}
+        	else
+        	{
+                isCompleted = true;
+        	}
         }
         repaint();
     }
