@@ -23,7 +23,7 @@ code-changes:
 
 -solving a level starts the next one
 
--eight wall-styles to choose from
+-eight wall-styles to choose from by dialog
 
 -added progress-strings to show number of solved eggs and as a step-counter
 
@@ -45,19 +45,8 @@ You can undo all moves you made so far in the level.
 R-key:  
 Restart the actual level.
 
-number-keys (0-9):  
-Choose your level to solve.
-
-B-key:  
-Change wall-style to brick-wall.
-
-I-key:  
-Change wall-style to ice-cubes.
-
-S-key:  
-Change wall-style to stone-blocks.
+L-key:  
+Open level-chooser-dialog (select a level in the drop-down-list).
 
 W-key:  
-Change wall-style to wood-planks.
-
-Press a key for the wall-styles again to switch to the "empty-frame"-version of this style and back to "solid".
+Open wall-design-chooser-dialog (eight wall-designs to choose from).
