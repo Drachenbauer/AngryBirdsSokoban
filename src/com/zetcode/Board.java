@@ -51,6 +51,8 @@ public class Board extends JPanel implements ActionListener
     public String level = levels.levels.get(0);
     public int level_number = 0;
     
+    private WallDesignDialog wall_design_dialog = new WallDesignDialog("Choose Wall-Design", true);
+    
     private Timer timer = new Timer();
     
     public Board()
@@ -60,6 +62,7 @@ public class Board extends JPanel implements ActionListener
     	
         addKeyListener(new TAdapter());
         level_dialog.okButton.addActionListener(this);
+        wall_design_dialog.okButton.addActionListener(this);
         
         initWorld();
         isCompleted();
@@ -736,67 +739,9 @@ public class Board extends JPanel implements ActionListener
                 
                 break;
                 
-                case KeyEvent.VK_B:
-                
-                for(Wall wall : walls)
-                {
-                	if (wall.image == wall.iicon_brick_wall_1.getImage())
-                	{
-                        wall.setImage(wall.iicon_brick_wall_2);
-                	}
-                	else
-                	{
-                		wall.setImage(wall.iicon_brick_wall_1);
-                	}
-                }
-                
-                break;
-                
-                case KeyEvent.VK_I:
-                
-                for(Wall wall : walls)
-                {
-                	if (wall.image == wall.iicon_ice_wall_1.getImage())
-                	{
-                        wall.setImage(wall.iicon_ice_wall_2);
-                	}
-                	else
-                	{
-                		wall.setImage(wall.iicon_ice_wall_1);
-                	}
-                }
-                
-                break;
-                
-                case KeyEvent.VK_S:
-                
-                for (Wall wall : walls)
-                {
-                	if (wall.image == wall.iicon_stone_wall_1.getImage())
-                	{
-                        wall.setImage(wall.iicon_stone_wall_2);
-                	}
-                	else
-                	{
-                		wall.setImage(wall.iicon_stone_wall_1);
-                	}
-                }
-                
-                break;
-                
                 case KeyEvent.VK_W:
                 
-                for (Wall wall : walls)
-                {
-                	if (wall.image == wall.iicon_wood_wall_1.getImage())
-                	{
-                        wall.setImage(wall.iicon_wood_wall_2);
-                	}
-                	else
-                	{
-                		wall.setImage(wall.iicon_wood_wall_1);
-                	}
-                }
+                wall_design_dialog.setVisible(true);
                 
                 break;
                 
@@ -810,8 +755,20 @@ public class Board extends JPanel implements ActionListener
     
     public void actionPerformed(ActionEvent evt)
     {
-    	changeLevel((int)level_dialog.levelList.getSelectedItem());
-    	level_dialog.setVisible(false);
+    	if (evt.getSource()==level_dialog.okButton)
+        {
+    	    changeLevel((int)level_dialog.levelList.getSelectedItem());
+    	    level_dialog.setVisible(false);
+        }
+    	else if (evt.getSource()==wall_design_dialog.okButton)
+    	{
+    		for (Wall wall : walls)
+    		{
+    			wall.changeWall((String)wall_design_dialog.wallList.getSelectedItem());
+    		}
+    		repaint();
+    		wall_design_dialog.setVisible(false);
+    	}
     }
     
     public void changeLevel(int number)
