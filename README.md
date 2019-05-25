@@ -23,11 +23,17 @@ code-changes:
 
 -solving a level starts the next one
 
--eight wall-styles to choose from by dialog
+-11 bird-characters to choose from by dialog
+
+-eight wall-desighns to choose from by dialog
 
 -added progress-strings to show number of solved eggs and as a step-counter
 
 -added an undo-steps-function
+
+-saves progress and choosen bird and walls in an ini-file
+
+-level-dialog shows wich levels are solved
 
 
 Controls:
@@ -47,6 +53,9 @@ Restart the actual level.
 
 L-key:  
 Open level-chooser-dialog (select a level in the drop-down-list).
+
+B-key:
+Open bird-chooser-dialog (11 bird-characters to choose from)
 
 W-key:  
 Open wall-design-chooser-dialog (eight wall-designs to choose from).
