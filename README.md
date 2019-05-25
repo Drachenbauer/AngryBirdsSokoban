@@ -21,19 +21,21 @@ code-changes:
 
 -many levels to choose from by dialog
 
--solving a level starts the next one
-
 -11 bird-characters to choose from by dialog
 
 -eight wall-desighns to choose from by dialog
+
+-saves progress and choosen bird and walls in an ini-file
+
+-level-dialog shows wich levels are solved
+
+-solving a level starts the next one
 
 -added progress-strings to show number of solved eggs and as a step-counter
 
 -added an undo-steps-function
 
--saves progress and choosen bird and walls in an ini-file
 
--level-dialog shows wich levels are solved
 
 
 Controls:
