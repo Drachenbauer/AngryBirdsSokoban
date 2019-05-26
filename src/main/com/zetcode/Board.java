@@ -19,7 +19,7 @@ import org.ini4j.Wini;
 import main.com.zetcode.game_tiles.Egg;
 import main.com.zetcode.game_tiles.Movable;
 import main.com.zetcode.game_tiles.Nest;
-import main.com.zetcode.game_tiles.Player;
+import main.com.zetcode.game_tiles.Bird;
 import main.com.zetcode.game_tiles.Tile;
 import main.com.zetcode.game_tiles.Wall;
 
@@ -38,7 +38,7 @@ public class Board extends JPanel implements ActionListener
     private ArrayList<Wall> walls;
     private ArrayList<Nest> nests;
     private ArrayList<Egg> eggs;
-    private Player bird;
+    private Bird bird;
     
     private int finishedEggs;
     private int nOfEggs;
@@ -180,9 +180,8 @@ public class Board extends JPanel implements ActionListener
                 break;
                 
                 case '@':
-                bird = new Player(x, y);
+                bird = new Bird(x, y);
                 bird.changeBird(selected_bird);
-                bird.setImage(bird.iicon_bird_down);
                 x += SPACE;
                 break;
                 
@@ -197,9 +196,8 @@ public class Board extends JPanel implements ActionListener
                 case '+':
                 nest = new Nest(x, y);
                 nests.add(nest);
-                bird = new Player(x, y);
+                bird = new Bird(x, y);
                 bird.changeBird(selected_bird);
-                bird.setImage(bird.iicon_bird_down);
                 x += SPACE;
                 break;
                 

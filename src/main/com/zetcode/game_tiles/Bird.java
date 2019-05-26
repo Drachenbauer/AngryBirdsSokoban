@@ -2,7 +2,7 @@ package main.com.zetcode.game_tiles;
 
 import javax.swing.ImageIcon;
 
-public class Player extends Movable
+public class Bird extends Movable
 {
 	public ImageIcon iicon_bird_left;
 	public ImageIcon iicon_bird_right;
@@ -14,7 +14,7 @@ public class Player extends Movable
 	public ImageIcon iicon_bird_hop_up;
 	public ImageIcon iicon_bird_hop_down;
 	
-    public Player(int x, int y)
+    public Bird(int x, int y)
     {
         super(x, y);
     }
@@ -57,6 +57,8 @@ public class Player extends Movable
         	iicon_bird_hop_up = new ImageIcon("src/main/resources/birds/" + bird + "/bird_hop_up.png");
         	iicon_bird_hop_down = new ImageIcon("src/main/resources/birds/" + bird + "/bird_hop_down.png");
         }
+    	
+    	setImage(iicon_bird_down);
     }
     
     @Override

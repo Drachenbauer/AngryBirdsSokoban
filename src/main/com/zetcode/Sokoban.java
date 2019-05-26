@@ -24,7 +24,7 @@ public class Sokoban extends JFrame
     {
         Board board = new Board();
         add(board);
-
+        
         setTitle("Sokoban");
         setIconImage(iicon_nest_icon.getImage());
         
