@@ -12,9 +12,8 @@ import java.util.Collections;
  * "+" = bird in nest
  * " " = empty field
  * 
- * The nest is my version of the target-place
- * The egg is my version of the baggage/box
- * The bird is the player-character.
+ * In this version of sokoban you control a bird from the
+ * "Angry Birds" - flock and have to push eggs into nests.
  */
 
 public class Levels

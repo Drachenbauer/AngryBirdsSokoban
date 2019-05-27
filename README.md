@@ -23,7 +23,7 @@ code-changes:
 
 -11 bird-characters to choose from by dialog
 
--eight wall-desighns to choose from by dialog
+-eight wall-designs to choose from by dialog
 
 -saves progress and choosen bird and walls in an ini-file
 
