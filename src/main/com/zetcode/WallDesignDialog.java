@@ -31,7 +31,7 @@ public class WallDesignDialog extends JDialog
     private int selectedIndex;
     public String selected;
     
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({ "unchecked", "rawtypes", "unused" })
 	public WallDesignDialog(String title, boolean modal, String selected)
 	{
         super();
@@ -41,8 +41,9 @@ public class WallDesignDialog extends JDialog
         
         images = new ImageIcon[wallDesigns.length];
         Integer[] intArray = new Integer[wallDesigns.length];
+        int i = 0;
         
-        for (int i = 0; i < wallDesigns.length; i++)
+        for (String wall: wallDesigns)
         {
             intArray[i] = new Integer(i);
             images[i] = new ImageIcon("src/main/resources/" + wallDesigns[i] + ".png");
@@ -51,6 +52,8 @@ public class WallDesignDialog extends JDialog
             {
                 selectedIndex = i;
             }
+            
+            i++;
         }
         
         wallList = new JComboBox(intArray);

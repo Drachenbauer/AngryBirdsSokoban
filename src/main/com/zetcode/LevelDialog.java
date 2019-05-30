@@ -76,7 +76,6 @@ public class LevelDialog extends JDialog
 	{
 		images = new ImageIcon[levels.levels.size()];
         intArray = new Integer[levels.levels.size()];
-        
         int i = 0;
         
         for (String level : levels.levels)

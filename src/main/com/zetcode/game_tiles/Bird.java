@@ -21,42 +21,15 @@ public class Bird extends Movable
     
     public void changeBird (String bird)
     {
-    	if (bird.equals("The Blues"))
-        {
-    		iicon_bird_left = new ImageIcon("src/main/resources/birds/The_Blues/bird_left.png");
-        	iicon_bird_right = new ImageIcon("src/main/resources/birds/The_Blues/bird_right.png");
-        	iicon_bird_up = new ImageIcon("src/main/resources/birds/The_Blues/bird_up.png");
-        	iicon_bird_down = new ImageIcon("src/main/resources/birds/The_Blues/bird_down.png");
-        	
-        	iicon_bird_hop_left = new ImageIcon("src/main/resources/birds/The_Blues/bird_hop_left.png");
-        	iicon_bird_hop_right = new ImageIcon("src/main/resources/birds/The_Blues/bird_hop_right.png");
-        	iicon_bird_hop_up = new ImageIcon("src/main/resources/birds/The_Blues/bird_hop_up.png");
-        	iicon_bird_hop_down = new ImageIcon("src/main/resources/birds/The_Blues/bird_hop_down.png");
-        }
-        else if (bird.equals("Ice Bird"))
-        {
-        	iicon_bird_left = new ImageIcon("src/main/resources/birds/Ice_Bird/bird_left.png");
-        	iicon_bird_right = new ImageIcon("src/main/resources/birds/Ice_Bird/bird_right.png");
-        	iicon_bird_up = new ImageIcon("src/main/resources/birds/Ice_Bird/bird_up.png");
-        	iicon_bird_down = new ImageIcon("src/main/resources/birds/Ice_Bird/bird_down.png");
-        	
-        	iicon_bird_hop_left = new ImageIcon("src/main/resources/birds/Ice_Bird/bird_hop_left.png");
-        	iicon_bird_hop_right = new ImageIcon("src/main/resources/birds/Ice_Bird/bird_hop_right.png");
-        	iicon_bird_hop_up = new ImageIcon("src/main/resources/birds/Ice_Bird/bird_hop_up.png");
-        	iicon_bird_hop_down = new ImageIcon("src/main/resources/birds/Ice_Bird/bird_hop_down.png");
-        }
-        else
-        {
-        	iicon_bird_left = new ImageIcon("src/main/resources/birds/" + bird + "/bird_left.png");
-        	iicon_bird_right = new ImageIcon("src/main/resources/birds/" + bird + "/bird_right.png");
-        	iicon_bird_up = new ImageIcon("src/main/resources/birds/" + bird + "/bird_up.png");
-        	iicon_bird_down = new ImageIcon("src/main/resources/birds/" + bird + "/bird_down.png");
-        	
-        	iicon_bird_hop_left = new ImageIcon("src/main/resources/birds/" + bird + "/bird_hop_left.png");
-        	iicon_bird_hop_right = new ImageIcon("src/main/resources/birds/" + bird + "/bird_hop_right.png");
-        	iicon_bird_hop_up = new ImageIcon("src/main/resources/birds/" + bird + "/bird_hop_up.png");
-        	iicon_bird_hop_down = new ImageIcon("src/main/resources/birds/" + bird + "/bird_hop_down.png");
-        }
+        iicon_bird_left = new ImageIcon("src/main/resources/birds/" + bird + "/bird_left.png");
+        iicon_bird_right = new ImageIcon("src/main/resources/birds/" + bird + "/bird_right.png");
+        iicon_bird_up = new ImageIcon("src/main/resources/birds/" + bird + "/bird_up.png");
+        iicon_bird_down = new ImageIcon("src/main/resources/birds/" + bird + "/bird_down.png");
+        
+        iicon_bird_hop_left = new ImageIcon("src/main/resources/birds/" + bird + "/bird_hop_left.png");
+        iicon_bird_hop_right = new ImageIcon("src/main/resources/birds/" + bird + "/bird_hop_right.png");
+        iicon_bird_hop_up = new ImageIcon("src/main/resources/birds/" + bird + "/bird_hop_up.png");
+        iicon_bird_hop_down = new ImageIcon("src/main/resources/birds/" + bird + "/bird_hop_down.png");
     	
     	setImage(iicon_bird_down);
     }

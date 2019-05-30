@@ -24,14 +24,19 @@ public class BirdDialog extends JDialog
     ImageIcon[] images;
     
     String[] birds = {"Red", "Chuck", "The Blues",
-    		                "Bomb", "Mathilda", "Terence",
-    		                "Silver", "Bubbles", "Hal",
-    		                "Stella", "Ice Bird"};
+    		          "Bomb", "Mathilda", "Terence",
+    		          "Silver", "Bubbles", "Hal",
+    		          "Stella", "Ice Bird"};
+    
+    String[] birds_resources = {"Red", "Chuck", "The_Blues",
+                                "Bomb", "Mathilda", "Terence",
+                                "Silver", "Bubbles", "Hal",
+                                "Stella", "Ice_Bird"};
     
     private int selectedIndex;
     public String selected;
     
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({ "unchecked", "rawtypes", "unused" })
 	public BirdDialog(String title, boolean modal, String selected)
 	{
         super();
@@ -39,30 +44,23 @@ public class BirdDialog extends JDialog
         setModal(modal);
         setTitle(title);
         
+        this.selected = selected;
+        
         images = new ImageIcon[birds.length];
         Integer[] intArray = new Integer[birds.length];
+        int i = 0;
         
-        for (int i = 0; i < birds.length; i++)
+        for (String bird : birds_resources)
         {
             intArray[i] = new Integer(i);
+            images[i] = new ImageIcon("src/main/resources/birds/" + birds_resources[i] + "/bird_down.png");
             
-            if (birds[i].equals("The Blues"))
-            {
-            	images[i] = new ImageIcon("src/main/resources/birds/The_Blues/bird_down.png");
-            }
-            else if (birds[i].equals("Ice Bird"))
-            {
-            	images[i] = new ImageIcon("src/main/resources/birds/Ice_Bird/bird_down.png");
-            }
-            else
-            {
-                images[i] = new ImageIcon("src/main/resources/birds/" + birds[i] + "/bird_down.png");
-            }
-            
-            if (birds[i].equals(selected))
+            if (birds[i].equals(this.selected))
             {
                 selectedIndex = i;
             }
+            
+            i++;
         }
         
         birdList = new JComboBox(intArray);
@@ -101,7 +99,7 @@ public class BirdDialog extends JDialog
 			setOpaque(true);
 	    	setHorizontalAlignment(CENTER);
 	    	setVerticalAlignment(CENTER);
-	    	selected = birds[selectedIndex];
+	    	selected = birds_resources[selectedIndex];
 		}
 		
 		@Override
@@ -115,7 +113,7 @@ public class BirdDialog extends JDialog
 			{
 	            setBackground(list.getSelectionBackground());
 	            setForeground(list.getSelectionForeground());
-	            selected = birds[selectedIndex];
+	            selected = birds_resources[selectedIndex];
 	        }
 			else
 			{
