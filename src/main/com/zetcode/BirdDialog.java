@@ -46,8 +46,8 @@ public class BirdDialog extends JDialog
         
         this.selected = selected;
         
-        images = new ImageIcon[birds.length];
-        Integer[] intArray = new Integer[birds.length];
+        images = new ImageIcon[birds_resources.length];
+        Integer[] intArray = new Integer[birds_resources.length];
         int i = 0;
         
         for (String bird : birds_resources)
