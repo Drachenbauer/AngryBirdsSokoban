@@ -55,7 +55,7 @@ public class BirdDialog extends JDialog
             intArray[i] = new Integer(i);
             images[i] = new ImageIcon("src/main/resources/birds/" + birds_resources[i] + "/bird_down.png");
             
-            if (birds[i].equals(this.selected))
+            if (birds_resources[i].equals(this.selected))
             {
                 selectedIndex = i;
             }
