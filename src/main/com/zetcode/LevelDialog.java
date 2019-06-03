@@ -128,9 +128,7 @@ public class LevelDialog extends JDialog
 	            setForeground(list.getForeground());
 	        }
 			
-			ImageIcon icon = images[selectedIndex];
-	        
-	        setIcon(icon);
+			setIcon(images[selectedIndex]);
 	        setText("Level " + selectedIndex);
 	        setFont(list.getFont());
 	        

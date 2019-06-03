@@ -107,8 +107,6 @@ public class BirdDialog extends JDialog
 		{
 			int selectedIndex = ((Integer)value).intValue();
 			
-			String bird = birds[selectedIndex];
-			
 			if (isSelected)
 			{
 	            setBackground(list.getSelectionBackground());
@@ -121,10 +119,8 @@ public class BirdDialog extends JDialog
 	            setForeground(list.getForeground());
 	        }
 			
-			ImageIcon icon = images[selectedIndex];
-	        
-	        setIcon(icon);
-	        setText(bird);
+	        setIcon(images[selectedIndex]);
+	        setText(birds[selectedIndex]);
 	        setFont(list.getFont());
 	        
 			return this;

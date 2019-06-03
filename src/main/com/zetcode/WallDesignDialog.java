@@ -99,8 +99,6 @@ public class WallDesignDialog extends JDialog
 		{
 			int selectedIndex = ((Integer)value).intValue();
 			
-			String wallDesign = wallDesigns[selectedIndex];
-			
 			if (isSelected)
 			{
 	            setBackground(list.getSelectionBackground());
@@ -113,10 +111,8 @@ public class WallDesignDialog extends JDialog
 	            setForeground(list.getForeground());
 	        }
 			
-			ImageIcon icon = images[selectedIndex];
-	        
-	        setIcon(icon);
-	        setText(wallDesign);
+	        setIcon(images[selectedIndex]);
+	        setText(wallDesigns[selectedIndex]);
 	        setFont(list.getFont());
 	        
 			return this;
