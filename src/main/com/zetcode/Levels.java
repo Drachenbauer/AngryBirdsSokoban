@@ -18,19 +18,19 @@ import java.util.Collections;
 
 public class Levels
 {
-public ArrayList<String> levels = new ArrayList<>();
-	
-	public Levels()
-	{
-		Collections.addAll(levels, "  ###\n"
-	                             + "  #.#\n"
-	                             + "###$###\n"
-	                             + "#.$@$.#\n"
-	                             + "###$###\n"
-	                             + "  #.#\n"
-	                             + "  ###\n" ,
-		                         
-		                           "      ###\n"
+    public ArrayList<String> levels = new ArrayList<>();
+    
+    public Levels()
+    {
+        Collections.addAll(levels, "  ###\n"
+                                 + "  #.#\n"
+                                 + "###$###\n"
+                                 + "#.$@$.#\n"
+                                 + "###$###\n"
+                                 + "  #.#\n"
+                                 + "  ###\n" ,
+                                 
+                                   "      ###\n"
                                  + "      #.#\n"
                                  + "    ### ###\n"
                                  + "    #.$ $.#\n"
@@ -45,8 +45,8 @@ public ArrayList<String> levels = new ArrayList<>();
                                  + "    ### ###\n"
                                  + "      #.#\n"
                                  + "      ###\n" ,
-		                         
-		                           "   #######\n"
+                                 
+                                   "   #######\n"
                                  + "####     #\n"
                                  + "#   .### #\n"
                                  + "# # #    ##\n"
@@ -57,7 +57,7 @@ public ArrayList<String> levels = new ArrayList<>();
                                  + " # ###.   @ #\n"
                                  + " #     ##   #\n"
                                  + " ############\n" ,
-		                         
+                                 
                                    "    #####\n"
                                  + "    #   #\n"
                                  + "    #$  #\n"
@@ -69,8 +69,8 @@ public ArrayList<String> levels = new ArrayList<>();
                                  + "##### ### #@##  ..#\n"
                                  + "    #     #########\n"
                                  + "    #######\n" ,
-		                         
-		                           "      ###\n"
+                                 
+                                   "      ###\n"
                                  + "     ## ##\n"
                                  + "    ##   ##\n"
                                  + "   ##     ##\n"
@@ -90,7 +90,7 @@ public ArrayList<String> levels = new ArrayList<>();
                                  + "     #   #\n"
                                  + "     ## ##\n"
                                  + "      ###\n" ,
-		                         
+                                 
                                    "################\n"
                                  + "#...#  ##  #...#\n"
                                  + "#... $ ## $ ...#\n"
@@ -107,8 +107,8 @@ public ArrayList<String> levels = new ArrayList<>();
                                  + "#... $ ## $ ...#\n"
                                  + "#...#  ##  #...#\n"
                                  + "################\n" ,
-		                         
-		                           "####### #### #######\n"
+                                 
+                                   "####### #### #######\n"
                                  + "#     # #..# #     #\n"
                                  + "# $$  ###..###  $$ #\n"
                                  + "#  $  #......#  $  #\n"
@@ -135,5 +135,5 @@ public ArrayList<String> levels = new ArrayList<>();
                                  + "        # ##  $ #\n"
                                  + "        #    ####\n"
                                  + "        ######\n" );
-	}
+    }
 } 

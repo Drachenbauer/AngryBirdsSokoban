@@ -13,13 +13,13 @@ import org.ini4j.Wini;
 @SuppressWarnings("serial")
 public class Sokoban extends JFrame
 {
-	ImageIcon iicon_nest_icon = new ImageIcon("src/main/resources/nest_icon.png");
-	
+    ImageIcon iicon_nest_icon = new ImageIcon("src/main/resources/nest_icon.png");
+    
     public Sokoban()
     {
         initUI();
     }
-
+    
     private void initUI()
     {
         Board board = new Board();
@@ -37,13 +37,13 @@ public class Sokoban extends JFrame
         addWindowListener(new WindowAdapter()
         {
             @SuppressWarnings("unused")
-			@Override
+            @Override
             public void windowClosing(WindowEvent event)
             {
-            	try
-            	{
-            		File newFile = new File("D:\\Mods\\AngryBirdsSokoban-Data.ini");
-            		newFile.createNewFile();
+                try
+                {
+                    File newFile = new File("D:\\Mods\\AngryBirdsSokoban-Data.ini");
+                    newFile.createNewFile();
                     Wini ini = new Wini(new File("D:\\Mods\\AngryBirdsSokoban-Data.ini"));
                     
                     ini.put("Levels", "Actual", board.level_number);
@@ -52,8 +52,8 @@ public class Sokoban extends JFrame
                     
                     for (String level: board.levels.levels)
                     {
-                    	ini.put("Levels", "Level "  + i + " solved", board.solved[i]);
-                    	i++;
+                        ini.put("Levels", "Level "  + i + " solved", board.solved[i]);
+                        i++;
                     }
                     
                     ini.put("Design", "Bird", board.selected_bird);
@@ -61,18 +61,18 @@ public class Sokoban extends JFrame
                     
                     ini.store();
                 }
-            	catch(Exception e)
-            	{
+                catch(Exception e)
+                {
                     System.err.println(e.getMessage());
                 }
-            	
-            	dispose();
+                
+                dispose();
                 System.exit(0);
             }
         }
         );
     }
-
+    
     public static void main(String[] args)
     {
         EventQueue.invokeLater(() ->

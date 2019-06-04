@@ -15,10 +15,10 @@ import javax.swing.SwingConstants;
 @SuppressWarnings("serial")
 public class LevelDialog extends JDialog
 {
-	private JPanel contentPane = new JPanel();
-	private JLabel text = new JLabel("Choose your level!", SwingConstants.CENTER);
+    private JPanel contentPane = new JPanel();
+    private JLabel text = new JLabel("Choose your level!", SwingConstants.CENTER);
     @SuppressWarnings("rawtypes")
-	public JComboBox levelList;
+    public JComboBox levelList;
     public JButton okButton = new JButton("OK");
     
     private Levels levels = new Levels();
@@ -30,10 +30,10 @@ public class LevelDialog extends JDialog
     private int level_number;
     public int[] solved = new int[levels.levels.size()];
     
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public LevelDialog(String title, boolean modal, int level_number, int[] solved)
-	{
-		super();
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    public LevelDialog(String title, boolean modal, int level_number, int[] solved)
+    {
+        super();
         setDefaultCloseOperation(HIDE_ON_CLOSE);
         setModal(modal);
         setTitle(title);
@@ -70,11 +70,11 @@ public class LevelDialog extends JDialog
         setResizable(false);
         pack();
     }
-	
-	@SuppressWarnings("unused")
-	public void setSolvedGraphics()
-	{
-		images = new ImageIcon[levels.levels.size()];
+    
+    @SuppressWarnings("unused")
+    public void setSolvedGraphics()
+    {
+        images = new ImageIcon[levels.levels.size()];
         intArray = new Integer[levels.levels.size()];
         int i = 0;
         
@@ -88,7 +88,7 @@ public class LevelDialog extends JDialog
             }
             else
             {
-            	images[i] = new ImageIcon("src/main/resources/nest_icon.png");
+                images[i] = new ImageIcon("src/main/resources/nest_icon.png");
             }
             
             if (intArray[i] == level_number)
@@ -98,41 +98,41 @@ public class LevelDialog extends JDialog
             
             i++;
         }
-	}
-	
-	@SuppressWarnings({ "rawtypes" })
-	class ComboBoxRenderer extends JLabel implements ListCellRenderer
-	{
-		public ComboBoxRenderer()
-		{
-			setOpaque(true);
-	    	setHorizontalAlignment(CENTER);
-	    	setVerticalAlignment(CENTER);
-	    	level_number = selectedIndex;
-		}
-		
-		@Override
-		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus)
-		{
-			int selectedIndex = ((Integer)value).intValue();
-			
-			if (isSelected)
-			{
-	            setBackground(list.getSelectionBackground());
-	            setForeground(list.getSelectionForeground());
-	            level_number = selectedIndex;
-	        }
-			else
-			{
-	            setBackground(list.getBackground());
-	            setForeground(list.getForeground());
-	        }
-			
-			setIcon(images[selectedIndex]);
-	        setText("Level " + selectedIndex);
-	        setFont(list.getFont());
-	        
-			return this;
-		}
-	}
+    }
+    
+    @SuppressWarnings({ "rawtypes" })
+    class ComboBoxRenderer extends JLabel implements ListCellRenderer
+    {
+        public ComboBoxRenderer()
+        {
+            setOpaque(true);
+            setHorizontalAlignment(CENTER);
+            setVerticalAlignment(CENTER);
+            level_number = selectedIndex;
+        }
+
+        @Override
+        public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus)
+        {
+            int selectedIndex = ((Integer)value).intValue();
+            
+            if (isSelected)
+            {
+                setBackground(list.getSelectionBackground());
+                setForeground(list.getSelectionForeground());
+                level_number = selectedIndex;
+            }
+            else
+            {
+                setBackground(list.getBackground());
+                setForeground(list.getForeground());
+            }
+            
+            setIcon(images[selectedIndex]);
+            setText("Level " + selectedIndex);
+            setFont(list.getFont());
+            
+            return this;
+        }
+    }
 }

@@ -15,18 +15,18 @@ import javax.swing.SwingConstants;
 @SuppressWarnings("serial")
 public class BirdDialog extends JDialog
 {
-	private JPanel contentPane = new JPanel();
-	private JLabel text = new JLabel("Choose your bird-character to play as!", SwingConstants.CENTER);
+    private JPanel contentPane = new JPanel();
+    private JLabel text = new JLabel("Choose your bird-character to play as!", SwingConstants.CENTER);
     @SuppressWarnings("rawtypes")
-	public JComboBox birdList;
+    public JComboBox birdList;
     public JButton okButton = new JButton("OK");
     
     ImageIcon[] images;
     
     String[] birds = {"Red", "Chuck", "The Blues",
-    		          "Bomb", "Mathilda", "Terence",
-    		          "Silver", "Bubbles", "Hal",
-    		          "Stella", "Ice Bird"};
+                      "Bomb", "Mathilda", "Terence",
+                      "Silver", "Bubbles", "Hal",
+                      "Stella", "Ice Bird"};
     
     String[] birds_resources = {"Red", "Chuck", "The_Blues",
                                 "Bomb", "Mathilda", "Terence",
@@ -36,9 +36,9 @@ public class BirdDialog extends JDialog
     private int selectedIndex;
     public String selected;
     
-	@SuppressWarnings({ "unchecked", "rawtypes", "unused" })
-	public BirdDialog(String title, boolean modal, String selected)
-	{
+    @SuppressWarnings({ "unchecked", "rawtypes", "unused" })
+    public BirdDialog(String title, boolean modal, String selected)
+    {
         super();
         setDefaultCloseOperation(HIDE_ON_CLOSE);
         setModal(modal);
@@ -90,41 +90,41 @@ public class BirdDialog extends JDialog
         setResizable(false);
         pack();
     }
-	
-	@SuppressWarnings({ "rawtypes" })
-	class ComboBoxRenderer extends JLabel implements ListCellRenderer
-	{
-		public ComboBoxRenderer()
-		{
-			setOpaque(true);
-	    	setHorizontalAlignment(CENTER);
-	    	setVerticalAlignment(CENTER);
-	    	selected = birds_resources[selectedIndex];
-		}
-		
-		@Override
-		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus)
-		{
-			int selectedIndex = ((Integer)value).intValue();
-			
-			if (isSelected)
-			{
-	            setBackground(list.getSelectionBackground());
-	            setForeground(list.getSelectionForeground());
-	            selected = birds_resources[selectedIndex];
-	        }
-			else
-			{
-	            setBackground(list.getBackground());
-	            setForeground(list.getForeground());
-	        }
-			
-	        setIcon(images[selectedIndex]);
-	        setText(birds[selectedIndex]);
-	        setFont(list.getFont());
-	        
-			return this;
-		}
-	}
+    
+    @SuppressWarnings({ "rawtypes" })
+    class ComboBoxRenderer extends JLabel implements ListCellRenderer
+    {
+        public ComboBoxRenderer()
+        {
+            setOpaque(true);
+            setHorizontalAlignment(CENTER);
+            setVerticalAlignment(CENTER);
+            selected = birds_resources[selectedIndex];
+        }
+        
+        @Override
+        public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus)
+        {
+            int selectedIndex = ((Integer)value).intValue();
+            
+            if (isSelected)
+            {
+                setBackground(list.getSelectionBackground());
+                setForeground(list.getSelectionForeground());
+                selected = birds_resources[selectedIndex];
+            }
+            else
+            {
+                setBackground(list.getBackground());
+                setForeground(list.getForeground());
+            }
+            
+            setIcon(images[selectedIndex]);
+            setText(birds[selectedIndex]);
+            setFont(list.getFont());
+            
+            return this;
+        }
+    }
 }
 

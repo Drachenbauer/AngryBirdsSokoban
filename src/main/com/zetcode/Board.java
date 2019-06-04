@@ -26,7 +26,7 @@ import main.com.zetcode.game_tiles.Wall;
 @SuppressWarnings("serial")
 public class Board extends JPanel implements ActionListener
 {
-	private final int WIDTH = 1024;         // fits up to 32 level-tiles
+    private final int WIDTH = 1024;         // fits up to 32 level-tiles
     private final int HIGHT = 672;          // fits up to 20 level-tiles + STATUSBAR
     public static final int SPACE = 32;
     private final int STATUSBAR = 32;       // hight of STATUSBAR-area
@@ -42,7 +42,7 @@ public class Board extends JPanel implements ActionListener
     
     private int finishedEggs;
     private int nOfEggs;
-        
+    
     private int moves = 0;
     
     private boolean isCompleted = false;
@@ -63,41 +63,41 @@ public class Board extends JPanel implements ActionListener
     private Timer timer = new Timer();
     
     @SuppressWarnings("unused")
-	public Board()
+    public Board()
     {
-    	setPreferredSize(new Dimension(WIDTH, HIGHT));
-    	setFocusable(true);
-    	
-    	selected_bird = "Red";
-    	selected_wall = "Bricks";
+        setPreferredSize(new Dimension(WIDTH, HIGHT));
+        setFocusable(true);
+        
+        selected_bird = "Red";
+        selected_wall = "Bricks";
         loadLevel(0);
-    	
+        
         int i = 0;
         
         for (String level: levels.levels)
         {
-        	solved[i] = 0;
-        	i++;
+            solved[i] = 0;
+            i++;
         }
         
         try
         {
-			Wini ini = new Wini(new File("D:\\Mods\\AngryBirdsSokoban-Data.ini"));
-		    
-			selected_bird = ini.get("Design", "Bird");
-			selected_wall = ini.get("Design", "Walls");
-			loadLevel(ini.get("Levels", "Actual", int.class));
-			
-			i = 0;
-			
-	        for (String level: levels.levels)
-	        {
-	        	solved[i] = ini.get("Levels", "Level "  + i + " solved", int.class);
-	        	i++;
-	        }
-		}
+            Wini ini = new Wini(new File("D:\\Mods\\AngryBirdsSokoban-Data.ini"));
+            
+            selected_bird = ini.get("Design", "Bird");
+            selected_wall = ini.get("Design", "Walls");
+            loadLevel(ini.get("Levels", "Actual", int.class));
+            
+            i = 0;
+            
+            for (String level: levels.levels)
+            {
+                solved[i] = ini.get("Levels", "Level "  + i + " solved", int.class);
+                i++;
+            }
+        }
         catch(Exception e)
-    	{
+        {
             System.err.println(e.getMessage());
         }
         
@@ -115,28 +115,28 @@ public class Board extends JPanel implements ActionListener
     
     private void initWorld()
     {
-    	moves = 0;
-    	
-    	if (isCompleted)
+        moves = 0;
+        
+        if (isCompleted)
         {
             isCompleted = false;
         }
-    	
-    	if (walls != null)
-    	{
-    	    walls.clear();
-    	}
-    	
-    	if (nests != null)
-    	{
-    		nests.clear();
-    	}
         
-    	if (eggs != null)
-    	{
-    		eggs.clear();
-    	}
-    	
+        if (walls != null)
+        {
+            walls.clear();
+        }
+        
+        if (nests != null)
+        {
+            nests.clear();
+        }
+        
+        if (eggs != null)
+        {
+            eggs.clear();
+        }
+        
         walls = new ArrayList<>();
         nests = new ArrayList<>();
         eggs = new ArrayList<>();
@@ -147,7 +147,7 @@ public class Board extends JPanel implements ActionListener
         
         int x = 0;
         int y = 0;
-                
+        
         for (int i = 0; i < level.length(); i++)
         {
             char item = level.charAt(i);
@@ -155,57 +155,73 @@ public class Board extends JPanel implements ActionListener
             switch (item)
             {
                 case '\n':
-                y += SPACE;
                 
+                y += SPACE;
                 x = 0;
+                
                 break;
                 
                 case '#':
+                
                 wall = new Wall(x, y);
                 walls.add(wall);
                 wall.changeWall(selected_wall);
                 x += SPACE;
+                
                 break;
                 
                 case '.':
+                
                 nest = new Nest(x, y);
                 nests.add(nest);
                 x += SPACE;
+                
                 break;
                 
                 case '$':
+                
                 egg = new Egg(x, y);
                 eggs.add(egg);
                 x += SPACE;
+                
                 break;
                 
                 case '@':
+                
                 bird = new Bird(x, y);
                 bird.changeBird(selected_bird);
                 x += SPACE;
+                
                 break;
                 
                 case '*':
+                
                 nest = new Nest(x, y);
                 nests.add(nest);
                 egg = new Egg(x, y);
                 eggs.add(egg);
                 x += SPACE;
+                
                 break;
                 
                 case '+':
+                
                 nest = new Nest(x, y);
                 nests.add(nest);
                 bird = new Bird(x, y);
                 bird.changeBird(selected_bird);
                 x += SPACE;
+                
                 break;
                 
                 case ' ':
+                
                 x += SPACE;
+                
                 break;
                 
                 default:
+                
                 break;
             }
         }
@@ -215,10 +231,10 @@ public class Board extends JPanel implements ActionListener
     
     private void buildWorld(Graphics g)
     {
-    	g.setColor(new Color(0, 191, 0));
+        g.setColor(new Color(0, 191, 0));
         g.fillRect(0, 0, WIDTH, HIGHT);
-    	
-    	g.setColor(new Color(127, 127, 0));
+        
+        g.setColor(new Color(127, 127, 0));
         g.fillRect(0, HIGHT - STATUSBAR, WIDTH, STATUSBAR);
         
         ArrayList<Tile> world = new ArrayList<>();
@@ -241,7 +257,7 @@ public class Board extends JPanel implements ActionListener
         }
         else
         {
-        	g.drawString("Level " + level_number, 16, 656);
+            g.drawString("Level " + level_number, 16, 656);
         }
         
         g.drawString("Bird: " + selected_bird, 272, 656);
@@ -261,17 +277,17 @@ public class Board extends JPanel implements ActionListener
         @Override
         public void keyPressed(KeyEvent e)
         {
-        	if (isMoving)
+            if (isMoving)
             {
                 return;
             }
-        	
+            
             int key = e.getKeyCode();
             
             switch (key)
             {    
                 case KeyEvent.VK_LEFT:
-                	
+                
                 if (isCompleted)
                 {
                     return;
@@ -279,15 +295,15 @@ public class Board extends JPanel implements ActionListener
                 
                 if (checkWallCollision(bird, LEFT_COLLISION))
                 {
-                	bird.setImage(bird.iicon_bird_left);
-                	repaint();
+                    bird.setImage(bird.iicon_bird_left);
+                    repaint();
                     return;
                 }
                 
                 if (checkEggCollision(LEFT_COLLISION))
                 {
-                	bird.setImage(bird.iicon_bird_left);
-                	repaint();
+                    bird.setImage(bird.iicon_bird_left);
+                    repaint();
                     return;
                 }
                 
@@ -295,114 +311,114 @@ public class Board extends JPanel implements ActionListener
                 
                 for (Egg egg : eggs)
                 {
-                	egg.savePos();
-                	
+                    egg.savePos();
+                    
                     if (bird.isLeftCollision(egg))
                     {
                         egg.setImage(egg.iicon_egg_1);
-                        
+
                         egg.move(-SPACE / 4, 0);
                         repaint();
                         
                         timer.schedule(new TimerTask()
-            	        {
-        			        @Override
-        			        public void run()
-        			        {
-        				        egg.move(-SPACE / 4, 0);
-        		                repaint();
-        		                
-        		    	        timer.schedule(new TimerTask()
-        		    	        {
-        					        @Override
-        					        public void run()
-        					        {
-        						        egg.move(-SPACE / 4, 0);
-        				                repaint();
-        				                
-        				    	        timer.schedule(new TimerTask()
-        				    	        {
-        							        @Override
-        							        public void run()
-        							        {
-        								        egg.move(-SPACE / 4, 0);
-        						                repaint();
-        						                
-        						                isCompleted();
-        						            }
-        				    	        }
-        				    	        , 100);
-        					        }
-        		    	        }
-        		    	        , 100);
-        			        }
-            	        }
+                        {
+                            @Override
+                            public void run()
+                            {
+                                egg.move(-SPACE / 4, 0);
+                                repaint();
+                                
+                                timer.schedule(new TimerTask()
+                                {
+                                    @Override
+                                    public void run()
+                                    {
+                                        egg.move(-SPACE / 4, 0);
+                                        repaint();
+                                        
+                                        timer.schedule(new TimerTask()
+                                        {
+                                            @Override
+                                            public void run()
+                                            {
+                                                egg.move(-SPACE / 4, 0);
+                                                repaint();
+                                                
+                                                isCompleted();
+                                            }
+                                        }
+                                        , 100);
+                                    }
+                                }
+                                , 100);
+                            }
+                        }
                         , 100);
                     }
                 }
                 
                 bird.savePos();
-
+                
                 bird.setImage(bird.iicon_bird_hop_left);
                 bird.move(-SPACE / 4, 0);
                 repaint();
                 
-        		timer.schedule(new TimerTask()
-        		{
-    				@Override
-    				public void run()
-    				{
-    					bird.setImage(bird.iicon_bird_left);
-    					bird.move(-SPACE / 4, 0);
-    		            repaint();
-    		            
-    		    		timer.schedule(new TimerTask()
-    		    		{
-    						@Override
-    						public void run()
-    						{
-    							bird.setImage(bird.iicon_bird_hop_left);
-    							bird.move(-SPACE / 4, 0);
-    				            repaint();
-    				            
-    				    		timer.schedule(new TimerTask()
-    				    		{
-    								@Override
-    								public void run()
-    								{
-    									bird.setImage(bird.iicon_bird_left);
-    									bird.move(-SPACE / 4, 0);
-    						            repaint();
-    						            
-    						            timer.schedule(new TimerTask()
-    	    				    		{
-    	    								@Override
-    	    								public void run()
-    	    								{
-    	    						            moves++;
-    	    						            repaint();
-
-    	    						            if (finishedEggs != nOfEggs)
-    	    						            {
-    	    						                isMoving = false;
-    	    						            }
-    	    								}
-    	    				    	    }
-    						            , 100);
-    								}
-    				    	    }
-    				    		, 100);
-    						}
-    		    	    }
-    		    		, 100);
-    				}
-        	    }
-        		, 100);
+                timer.schedule(new TimerTask()
+                {
+                    @Override
+                    public void run()
+                    {
+                        bird.setImage(bird.iicon_bird_left);
+                        bird.move(-SPACE / 4, 0);
+                        repaint();
+                        
+                        timer.schedule(new TimerTask()
+                        {
+                            @Override
+                            public void run()
+                            {
+                                bird.setImage(bird.iicon_bird_hop_left);
+                                bird.move(-SPACE / 4, 0);
+                                repaint();
+                                
+                                timer.schedule(new TimerTask()
+                                {
+                                    @Override
+                                    public void run()
+                                    {
+                                        bird.setImage(bird.iicon_bird_left);
+                                        bird.move(-SPACE / 4, 0);
+                                        repaint();
+                                        
+                                        timer.schedule(new TimerTask()
+                                        {
+                                            @Override
+                                            public void run()
+                                            {
+                                                moves++;
+                                                repaint();
+                                                
+                                                if (finishedEggs != nOfEggs)
+                                                {
+                                                    isMoving = false;
+                                                }
+                                            }
+                                        }
+                                        , 100);
+                                    }
+                                }
+                                , 100);
+                            }
+                        }
+                        , 100);
+                    }
+                }
+                , 100);
                 
                 break;
                 
                 case KeyEvent.VK_RIGHT:
-                	
+                
                 if (isCompleted)
                 {
                     return;
@@ -410,15 +426,15 @@ public class Board extends JPanel implements ActionListener
                 
                 if (checkWallCollision(bird, RIGHT_COLLISION))
                 {
-                	bird.setImage(bird.iicon_bird_right);
-                	repaint();
+                    bird.setImage(bird.iicon_bird_right);
+                    repaint();
                     return;
                 }
                 
                 if (checkEggCollision(RIGHT_COLLISION))
                 {
-                	bird.setImage(bird.iicon_bird_right);
-                	repaint();
+                    bird.setImage(bird.iicon_bird_right);
+                    repaint();
                     return;
                 }
                 
@@ -426,114 +442,114 @@ public class Board extends JPanel implements ActionListener
                 
                 for (Egg egg : eggs)
                 {
-                	egg.savePos();
-                	
+                    egg.savePos();
+                    
                     if (bird.isRightCollision(egg))
                     {
                         egg.setImage(egg.iicon_egg_1);
-                        
+
                         egg.move(SPACE / 4, 0);
                         repaint();
                         
-                		timer.schedule(new TimerTask()
-                		{
-            				@Override
-            				public void run()
-            				{
-            					egg.move(SPACE / 4, 0);
-            		            repaint();
-            		            
-            		    		timer.schedule(new TimerTask()
-            		    		{
-            						@Override
-            						public void run()
-            						{
-            							egg.move(SPACE / 4, 0);
-            				            repaint();
-            				            
-            				    		timer.schedule(new TimerTask()
-            				    		{
-            								@Override
-            								public void run()
-            								{
-            									egg.move(SPACE / 4, 0);
-            						            repaint();
-            						            
-            						            isCompleted();
-            								}
-            				    	    }
-            				    		, 100);
-            						}
-            		    	    }
-            		    		, 100);
-            				}
-                	    }
-                		, 100);
+                        timer.schedule(new TimerTask()
+                        {
+                            @Override
+                            public void run()
+                            {
+                                egg.move(SPACE / 4, 0);
+                                repaint();
+                                
+                                timer.schedule(new TimerTask()
+                                {
+                                    @Override
+                                    public void run()
+                                    {
+                                        egg.move(SPACE / 4, 0);
+                                        repaint();
+                                        
+                                        timer.schedule(new TimerTask()
+                                        {
+                                            @Override
+                                            public void run()
+                                            {
+                                                egg.move(SPACE / 4, 0);
+                                                repaint();
+                                                
+                                                isCompleted();
+                                            }
+                                        }
+                                        , 100);
+                                    }
+                                }
+                                , 100);
+                            }
+                        }
+                        , 100);
                     }
                 }
                 
                 bird.savePos();
-
+                
                 bird.setImage(bird.iicon_bird_hop_right);
                 bird.move(SPACE / 4, 0);
                 repaint();
                 
-        		timer.schedule(new TimerTask()
-        		{
-    				@Override
-    				public void run()
-    				{
-    					bird.setImage(bird.iicon_bird_right);
-    					bird.move(SPACE / 4, 0);
-    		            repaint();
-    		            
-    		    		timer.schedule(new TimerTask()
-    		    		{
-    						@Override
-    						public void run()
-    						{
-    							bird.setImage(bird.iicon_bird_hop_right);
-    							bird.move(SPACE / 4, 0);
-    				            repaint();
-    				            
-    				    		timer.schedule(new TimerTask()
-    				    		{
-    								@Override
-    								public void run()
-    								{
-    									bird.setImage(bird.iicon_bird_right);
-    									bird.move(SPACE / 4, 0);
-    						            repaint();
-    						            
-    						            timer.schedule(new TimerTask()
-    	    				    		{
-    	    								@Override
-    	    								public void run()
-    	    								{
-    	    						            moves++;
-    	    						            repaint();
+                timer.schedule(new TimerTask()
+                {
+                    @Override
+                    public void run()
+                    {
+                        bird.setImage(bird.iicon_bird_right);
+                        bird.move(SPACE / 4, 0);
+                        repaint();
+                        
+                        timer.schedule(new TimerTask()
+                        {
+                            @Override
+                            public void run()
+                            {
+                                bird.setImage(bird.iicon_bird_hop_right);
+                                bird.move(SPACE / 4, 0);
+                                repaint();
+                                
+                                timer.schedule(new TimerTask()
+                                {
+                                    @Override
+                                    public void run()
+                                    {
+                                        bird.setImage(bird.iicon_bird_right);
+                                        bird.move(SPACE / 4, 0);
+                                        repaint();
+                                        
+                                        timer.schedule(new TimerTask()
+                                        {
+                                            @Override
+                                            public void run()
+                                            {
+                                                moves++;
+                                                repaint();
                                                 
-    	    						            if (finishedEggs != nOfEggs)
-    	    						            {
-    	    						                isMoving = false;
-    	    						            }
-    	    								}
-    	    				    	    }
-    						            , 100);
-    								}
-    				    	    }
-    				    		, 100);
-    						}
-    		    	    }
-    		    		, 100);
-    				}
-        	    }
-        		, 100);
+                                                if (finishedEggs != nOfEggs)
+                                                {
+                                                    isMoving = false;
+                                                }
+                                            }
+                                        }
+                                        , 100);
+                                    }
+                                }
+                                , 100);
+                            }
+                        }
+                        , 100);
+                    }
+                }
+                , 100);
                 
                 break;
                 
                 case KeyEvent.VK_UP:
-                	
+                
                 if (isCompleted)
                 {
                     return;
@@ -541,15 +557,15 @@ public class Board extends JPanel implements ActionListener
                 
                 if (checkWallCollision(bird, TOP_COLLISION))
                 {
-                	bird.setImage(bird.iicon_bird_up);
-                	repaint();
+                    bird.setImage(bird.iicon_bird_up);
+                    repaint();
                     return;
                 }
                 
                 if (checkEggCollision(TOP_COLLISION))
                 {
-                	bird.setImage(bird.iicon_bird_up);
-                	repaint();
+                    bird.setImage(bird.iicon_bird_up);
+                    repaint();
                     return;
                 }
                 
@@ -557,114 +573,114 @@ public class Board extends JPanel implements ActionListener
                 
                 for (Egg egg : eggs)
                 {
-                	egg.savePos();
-                	
+                    egg.savePos();
+                    
                     if (bird.isTopCollision(egg))
                     {
                         egg.setImage(egg.iicon_egg_1);
-                        
+
                         egg.move(0, -SPACE / 4);
                         repaint();
                         
-                		timer.schedule(new TimerTask()
-                		{
-            				@Override
-            				public void run()
-            				{
-            					egg.move(0, -SPACE / 4);
-            		            repaint();
-            		            
-            		    		timer.schedule(new TimerTask()
-            		    		{
-            						@Override
-            						public void run()
-            						{
-            							egg.move(0, -SPACE / 4);
-            				            repaint();
-            				            
-            				    		timer.schedule(new TimerTask()
-            				    		{
-            								@Override
-            								public void run()
-            								{
-            									egg.move(0, -SPACE / 4);
-            									repaint();
-            									
-            									isCompleted();
-            								}
-            				    	    }
-            				    		, 100);
-            						}
-            		    	    }
-            		    		, 100);
-            				}
-                	    }
-                		, 100);
+                        timer.schedule(new TimerTask()
+                        {
+                            @Override
+                            public void run()
+                            {
+                                egg.move(0, -SPACE / 4);
+                                repaint();
+                                
+                                timer.schedule(new TimerTask()
+                                {
+                                    @Override
+                                    public void run()
+                                    {
+                                        egg.move(0, -SPACE / 4);
+                                        repaint();
+                                        
+                                        timer.schedule(new TimerTask()
+                                        {
+                                            @Override
+                                            public void run()
+                                            {
+                                                egg.move(0, -SPACE / 4);
+                                                repaint();
+                                                
+                                                isCompleted();
+                                            }
+                                        }
+                                        , 100);
+                                    }
+                                }
+                                , 100);
+                            }
+                        }
+                        , 100);
                     }
                 }
                 
                 bird.savePos();
-
+                
                 bird.setImage(bird.iicon_bird_hop_up);
                 bird.move(0, -SPACE / 4);
                 repaint();
                 
-        		timer.schedule(new TimerTask()
-        		{
-    				@Override
-    				public void run()
-    				{
-    					bird.setImage(bird.iicon_bird_up);
-    					bird.move(0, -SPACE / 4);
-    		            repaint();
-    		            
-    		    		timer.schedule(new TimerTask()
-    		    		{
-    						@Override
-    						public void run()
-    						{
-    							bird.setImage(bird.iicon_bird_hop_up);
-    							bird.move(0, -SPACE / 4);
-    				            repaint();
-    				            
-    				    		timer.schedule(new TimerTask()
-    				    		{
-    								@Override
-    								public void run()
-    								{
-    									bird.setImage(bird.iicon_bird_up);
-    									bird.move(0, -SPACE / 4);
-    						            repaint();
-    						            
-    						            timer.schedule(new TimerTask()
-    	    				    		{
-    	    								@Override
-    	    								public void run()
-    	    								{
-    	    						            moves++;
-    	    						            repaint();
+                timer.schedule(new TimerTask()
+                {
+                    @Override
+                    public void run()
+                    {
+                        bird.setImage(bird.iicon_bird_up);
+                        bird.move(0, -SPACE / 4);
+                        repaint();
+                        
+                        timer.schedule(new TimerTask()
+                        {
+                            @Override
+                            public void run()
+                            {
+                                bird.setImage(bird.iicon_bird_hop_up);
+                                bird.move(0, -SPACE / 4);
+                                repaint();
+                                
+                                timer.schedule(new TimerTask()
+                                {
+                                    @Override
+                                    public void run()
+                                    {
+                                        bird.setImage(bird.iicon_bird_up);
+                                        bird.move(0, -SPACE / 4);
+                                        repaint();
+                                        
+                                        timer.schedule(new TimerTask()
+                                        {
+                                            @Override
+                                            public void run()
+                                            {
+                                                moves++;
+                                                repaint();
                                                 
-    	    						            if (finishedEggs != nOfEggs)
-    	    						            {
-    	    						                isMoving = false;
-    	    						            }
-    	    								}
-    	    				    	    }
-    						            , 100);
-    								}
-    				    	    }
-    				    		, 100);
-    						}
-    		    	    }
-    		    		, 100);
-    				}
-        	    }
-        		, 100);
+                                                if (finishedEggs != nOfEggs)
+                                                {
+                                                    isMoving = false;
+                                                }
+                                            }
+                                        }
+                                        , 100);
+                                    }
+                                }
+                                , 100);
+                            }
+                        }
+                        , 100);
+                    }
+                }
+                , 100);
                 
                 break;
                 
                 case KeyEvent.VK_DOWN:
-                	
+                
                 if (isCompleted)
                 {
                     return;
@@ -672,15 +688,15 @@ public class Board extends JPanel implements ActionListener
                 
                 if (checkWallCollision(bird, BOTTOM_COLLISION))
                 {
-                	bird.setImage(bird.iicon_bird_down);
-                	repaint();
+                    bird.setImage(bird.iicon_bird_down);
+                    repaint();
                     return;
                 }
                 
                 if (checkEggCollision(BOTTOM_COLLISION))
                 {
-                	bird.setImage(bird.iicon_bird_down);
-                	repaint();
+                    bird.setImage(bird.iicon_bird_down);
+                    repaint();
                     return;
                 }
                 
@@ -688,109 +704,109 @@ public class Board extends JPanel implements ActionListener
                 
                 for (Egg egg : eggs)
                 {
-                	egg.savePos();
-                	
+                    egg.savePos();
+                    
                     if (bird.isBottomCollision(egg))
                     {
-                    	egg.setImage(egg.iicon_egg_1);
-                    	
-                    	egg.move(0, SPACE / 4);
+                        egg.setImage(egg.iicon_egg_1);
+
+                        egg.move(0, SPACE / 4);
                         repaint();
                         
-                		timer.schedule(new TimerTask()
-                		{
-            				@Override
-            				public void run()
-            				{
-            					egg.move(0, SPACE / 4);
-            		            repaint();
-            		            
-            		    		timer.schedule(new TimerTask()
-            		    		{
-            						@Override
-            						public void run()
-            						{
-            							egg.move(0, SPACE / 4);
-            				            repaint();
-            				            
-            				    		timer.schedule(new TimerTask()
-            				    		{
-            								@Override
-            								public void run()
-            								{
-            									egg.move(0, SPACE / 4);
-            						            repaint();
-            						            
-            						            isCompleted();
-            								}
-            				    	    }
-            				    		, 100);
-            						}
-            		    	    }
-            		    		, 100);
-            				}
-                	    }
-                		, 100);
+                        timer.schedule(new TimerTask()
+                        {
+                            @Override
+                            public void run()
+                            {
+                                egg.move(0, SPACE / 4);
+                                repaint();
+                                
+                                timer.schedule(new TimerTask()
+                                {
+                                    @Override
+                                    public void run()
+                                    {
+                                        egg.move(0, SPACE / 4);
+                                        repaint();
+                                        
+                                        timer.schedule(new TimerTask()
+                                        {
+                                            @Override
+                                            public void run()
+                                            {
+                                                egg.move(0, SPACE / 4);
+                                                repaint();
+                                                
+                                                isCompleted();
+                                            }
+                                        }
+                                        , 100);
+                                    }
+                                }
+                                , 100);
+                            }
+                        }
+                        , 100);
                     }
                 }
                 
                 bird.savePos();
-
+                
                 bird.setImage(bird.iicon_bird_hop_down);
                 bird.move(0, SPACE / 4);
                 repaint();
                 
-        		timer.schedule(new TimerTask()
-        		{
-    				@Override
-    				public void run()
-    				{
-    					bird.setImage(bird.iicon_bird_down);
-    					bird.move(0, SPACE / 4);
-    		            repaint();
-    		            
-    		    		timer.schedule(new TimerTask()
-    		    		{
-    						@Override
-    						public void run()
-    						{
-    							bird.setImage(bird.iicon_bird_hop_down);
-    							bird.move(0, SPACE / 4);
-    				            repaint();
-    				            
-    				    		timer.schedule(new TimerTask()
-    				    		{
-    								@Override
-    								public void run()
-    								{
-    									bird.setImage(bird.iicon_bird_down);
-    									bird.move(0, SPACE / 4);
-    						            repaint();
-    						            
-    						            timer.schedule(new TimerTask()
-    	    				    		{
-    	    								@Override
-    	    								public void run()
-    	    								{
-    	    						            moves++;
-    	    						            repaint();
-    	    						            
-    	    						            if (finishedEggs != nOfEggs)
-    	    						            {
-    	    						                isMoving = false;
-    	    						            }
-    	    								}
-    	    				    	    }
-    						            , 100);
-    								}
-    				    	    }
-    				    		, 100);
-    						}
-    		    	    }
-    		    		, 100);
-    				}
-        	    }
-        		, 100);
+                timer.schedule(new TimerTask()
+                {
+                    @Override
+                    public void run()
+                    {
+                        bird.setImage(bird.iicon_bird_down);
+                        bird.move(0, SPACE / 4);
+                        repaint();
+                        
+                        timer.schedule(new TimerTask()
+                        {
+                            @Override
+                            public void run()
+                            {
+                                bird.setImage(bird.iicon_bird_hop_down);
+                                bird.move(0, SPACE / 4);
+                                repaint();
+                                
+                                timer.schedule(new TimerTask()
+                                {
+                                    @Override
+                                    public void run()
+                                    {
+                                        bird.setImage(bird.iicon_bird_down);
+                                        bird.move(0, SPACE / 4);
+                                        repaint();
+                                        
+                                        timer.schedule(new TimerTask()
+                                        {
+                                            @Override
+                                            public void run()
+                                            {
+                                                moves++;
+                                                repaint();
+                                                
+                                                if (finishedEggs != nOfEggs)
+                                                {
+                                                    isMoving = false;
+                                                }
+                                            }
+                                        }
+                                        , 100);
+                                    }
+                                }
+                                , 100);
+                            }
+                        }
+                        , 100);
+                    }
+                }
+                , 100);
                 
                 break;
                 
@@ -803,16 +819,16 @@ public class Board extends JPanel implements ActionListener
                 
                 if (moves > 0)
                 {
-                	bird.undoMove();
-                	
-                	for (Egg egg : eggs)
-                	{
-                		egg.setImage(egg.iicon_egg_1);
-                		egg.undoMove();
-                	}
-                	
-                	moves--;
-                	isCompleted();
+                    bird.undoMove();
+                    
+                    for (Egg egg : eggs)
+                    {
+                        egg.setImage(egg.iicon_egg_1);
+                        egg.undoMove();
+                    }
+                    
+                    moves--;
+                    isCompleted();
                 }
                 
                 break;
@@ -832,9 +848,9 @@ public class Board extends JPanel implements ActionListener
                 break;
                 
                 case KeyEvent.VK_B:
-                    
+                
                 bird_dialog.setVisible(true);
-                    
+                
                 break;
                 
                 case KeyEvent.VK_W:
@@ -844,6 +860,7 @@ public class Board extends JPanel implements ActionListener
                 break;
                 
                 default:
+                
                 break;
             }
             
@@ -853,39 +870,38 @@ public class Board extends JPanel implements ActionListener
     
     public void actionPerformed(ActionEvent evt)
     {
-    	if (evt.getSource()==level_dialog.okButton)
+        if (evt.getSource()==level_dialog.okButton)
         {
-    	    loadLevel((int)level_dialog.levelList.getSelectedItem());
-    	    level_dialog.setVisible(false);
+            loadLevel((int)level_dialog.levelList.getSelectedItem());
+            level_dialog.setVisible(false);
         }
-    	else if (evt.getSource()==wall_design_dialog.okButton)
-    	{
-    		selected_wall = wall_design_dialog.selected;
-    		
-    		for (Wall wall : walls)
-    		{
-    			wall.changeWall(wall_design_dialog.selected);
-    		}
-    		
-    		repaint();
-    		wall_design_dialog.setVisible(false);
-    	}
-    	else if (evt.getSource()==bird_dialog.okButton)
-    	{
-    		selected_bird = bird_dialog.selected;
-    		
-    		bird.changeBird(bird_dialog.selected);
-    		bird.setImage(bird.iicon_bird_down);
-    		
-    		repaint();
-    		bird_dialog.setVisible(false);
-    	}
+        else if (evt.getSource()==wall_design_dialog.okButton)
+        {
+            selected_wall = wall_design_dialog.selected;
+            
+            for (Wall wall : walls)
+            {
+                wall.changeWall(wall_design_dialog.selected);
+            }
+            
+            repaint();
+            wall_design_dialog.setVisible(false);
+        }
+        else if (evt.getSource()==bird_dialog.okButton)
+        {
+            selected_bird = bird_dialog.selected;
+            
+            bird.changeBird(bird_dialog.selected);
+            
+            repaint();
+            bird_dialog.setVisible(false);
+        }
     }
     
     public void loadLevel(int number)
     {
-    	level_number = number;
-    	level = levels.levels.get(level_number);
+        level_number = number;
+        level = levels.levels.get(level_number);
         initWorld();
     }
     
@@ -945,7 +961,7 @@ public class Board extends JPanel implements ActionListener
             
             break;
         }
-        
+
         return false;
     }
     
@@ -966,7 +982,7 @@ public class Board extends JPanel implements ActionListener
                     
                     for (Egg egg2 : eggs)
                     {
-                    	if (egg1.isLeftCollision(egg2))
+                        if (egg1.isLeftCollision(egg2))
                         {
                             return true;
                         }
@@ -989,7 +1005,7 @@ public class Board extends JPanel implements ActionListener
                     
                     for (Egg egg2 : eggs) 
                     {
-                    	if (egg1.isRightCollision(egg2))
+                        if (egg1.isRightCollision(egg2))
                         {
                             return true;
                         }
@@ -1000,7 +1016,7 @@ public class Board extends JPanel implements ActionListener
             return false;
             
             case TOP_COLLISION:
-                
+            
             for (Egg egg1 : eggs)
             {
                 if (bird.isTopCollision(egg1))
@@ -1012,18 +1028,18 @@ public class Board extends JPanel implements ActionListener
                     
                     for (Egg egg2 : eggs)
                     {
-                    	if (egg1.isTopCollision(egg2))
+                        if (egg1.isTopCollision(egg2))
                         {
                             return true;
                         }
                     }
                 }
             }
-
+            
             return false;
-                
+            
             case BOTTOM_COLLISION:
-                
+            
             for (Egg egg1 : eggs)
             {
                 if (bird.isBottomCollision(egg1))
@@ -1035,7 +1051,7 @@ public class Board extends JPanel implements ActionListener
                     
                     for (Egg egg2 : eggs)
                     {
-                    	if (egg1.isBottomCollision(egg2))
+                        if (egg1.isBottomCollision(egg2))
                         {
                             return true;
                         }
@@ -1072,25 +1088,25 @@ public class Board extends JPanel implements ActionListener
         
         if (finishedEggs == nOfEggs)
         {
-        	solved[level_number] = 1;
-        	
-        	if (level_number + 1 < levels.levels.size())
-        	{
-        		timer.schedule(new TimerTask()
-        		{
-    				@Override
-    				public void run()
-    				{
-    					loadLevel(level_number + 1);
-    					isMoving = false;
-    				}
-        	    }
-        		, 2000);
-        	}
-        	else
-        	{
+            solved[level_number] = 1;
+            
+            if (level_number + 1 < levels.levels.size())
+            {
+                timer.schedule(new TimerTask()
+                {
+                    @Override
+                    public void run()
+                    {
+                        loadLevel(level_number + 1);
+                        isMoving = false;
+                    }
+                }
+                , 2000);
+            }
+            else
+            {
                 isCompleted = true;
-        	}
+            }
         }
         
         repaint();
