@@ -7,13 +7,11 @@ https://github.com/Drachenbauer/AngryBirdsSokoban
 
 ![Sokoban game screenshot](sokoban_game.png)
 
-This is now an Angry Birds style version.
+Upgraded version
 
-I turned the player-dot into a bird from the Angry Birds flock.  
-I turned the baggage into eggs.  
-I turned the storage area into nests.  
-And I added six wall-styles similar to the piggie-construct-materials in the official Angry Birds Games.
-
+This is now an "Angry Birds"-style-version of Sokoban.
+You play as a bird from the "Angry Birds"-flock (you can choose from the whoole flock) and have to push eggs into nests.
+The walls are inspired by the building-materials of the green piggies in the official "Angry Birds"-games
 
 code-changes:
 
