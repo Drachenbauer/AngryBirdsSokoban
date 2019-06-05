@@ -17,7 +17,6 @@ import javax.swing.JPanel;
 import org.ini4j.Wini;
 
 import main.com.zetcode.game_tiles.Egg;
-import main.com.zetcode.game_tiles.Movable;
 import main.com.zetcode.game_tiles.Nest;
 import main.com.zetcode.game_tiles.Bird;
 import main.com.zetcode.game_tiles.Tile;
@@ -877,84 +876,30 @@ public class Board extends JPanel implements ActionListener
         initWorld();
     }
     
-    private boolean checkWallCollision(Movable movable, int type)
-    {
-        switch (type)
-        {
-            case LEFT_COLLISION:
-            
-            for (Wall wall: walls)
-            {
-                if (movable.isLeftCollision(wall))
-                {    
-                    return true;
-                }
-            }
-            
-            return false;
-            
-            case RIGHT_COLLISION:
-            
-            for (Wall wall: walls)
-            {
-                if (movable.isRightCollision(wall))
-                {
-                    return true;
-                }
-            }
-            
-            return false;
-            
-            case TOP_COLLISION:
-            
-            for (Wall wall: walls)
-            {
-                if (movable.isTopCollision(wall))
-                {
-                    return true;
-                }
-            }
-            
-            return false;
-            
-            case BOTTOM_COLLISION:
-            
-            for (Wall wall: walls)
-            {
-                if (movable.isBottomCollision(wall))
-                {    
-                    return true;
-                }
-            }
-            
-            return false;
-            
-            default:
-            
-            break;
-        }
-
-        return false;
-    }
-    
     private boolean checkCollision(int type)
     {
         switch (type)
         {    
             case LEFT_COLLISION:
             
-            if (checkWallCollision(bird, LEFT_COLLISION))
+            for (Wall wall : walls)
             {
-                return true;
+                if (bird.isLeftCollision(wall))
+                {    
+                    return true;
+                }
             }
             
             for (Egg egg1 : eggs)
             {
                 if (bird.isLeftCollision(egg1))
                 {
-                    if (checkWallCollision(egg1, LEFT_COLLISION))
+                    for (Wall wall : walls)
                     {
-                        return true;
+                        if (egg1.isLeftCollision(wall))
+                        {    
+                            return true;
+                        }
                     }
                     
                     for (Egg egg2 : eggs)
@@ -971,18 +916,24 @@ public class Board extends JPanel implements ActionListener
             
             case RIGHT_COLLISION:
             
-            if (checkWallCollision(bird, RIGHT_COLLISION))
+            for (Wall wall : walls)
             {
-                return true;
+                if (bird.isRightCollision(wall))
+                {
+                    return true;
+                }
             }
             
             for (Egg egg1 : eggs)
             {
                 if (bird.isRightCollision(egg1))
                 {
-                    if (checkWallCollision(egg1, RIGHT_COLLISION))
+                    for (Wall wall : walls)
                     {
-                        return true;
+                        if (egg1.isRightCollision(wall))
+                        {
+                            return true;
+                        }
                     }
                     
                     for (Egg egg2 : eggs) 
@@ -999,18 +950,24 @@ public class Board extends JPanel implements ActionListener
             
             case TOP_COLLISION:
             
-            if (checkWallCollision(bird, TOP_COLLISION))
+            for (Wall wall : walls)
             {
-                return true;
+                if (bird.isTopCollision(wall))
+                {
+                    return true;
+                }
             }
             
             for (Egg egg1 : eggs)
             {
                 if (bird.isTopCollision(egg1))
                 {
-                    if (checkWallCollision(egg1, TOP_COLLISION))
+                    for (Wall wall : walls)
                     {
-                        return true;
+                        if (egg1.isTopCollision(wall))
+                        {
+                            return true;
+                        }
                     }
                     
                     for (Egg egg2 : eggs)
@@ -1027,18 +984,24 @@ public class Board extends JPanel implements ActionListener
             
             case BOTTOM_COLLISION:
             
-            if (checkWallCollision(bird, BOTTOM_COLLISION))
+            for (Wall wall : walls)
             {
-                return true;
+                if (bird.isBottomCollision(wall))
+                {    
+                    return true;
+                }
             }
             
             for (Egg egg1 : eggs)
             {
                 if (bird.isBottomCollision(egg1))
                 {
-                    if (checkWallCollision(egg1, BOTTOM_COLLISION))
+                    for (Wall wall : walls)
                     {
-                        return true;
+                        if (egg1.isBottomCollision(wall))
+                        {    
+                            return true;
+                        }
                     }
                     
                     for (Egg egg2 : eggs)
