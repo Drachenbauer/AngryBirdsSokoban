@@ -293,14 +293,7 @@ public class Board extends JPanel implements ActionListener
                     return;
                 }
                 
-                if (checkWallCollision(bird, LEFT_COLLISION))
-                {
-                    bird.setImage(bird.iicon_bird_left);
-                    repaint();
-                    return;
-                }
-                
-                if (checkEggCollision(LEFT_COLLISION))
+                if (checkCollision(LEFT_COLLISION))
                 {
                     bird.setImage(bird.iicon_bird_left);
                     repaint();
@@ -424,14 +417,7 @@ public class Board extends JPanel implements ActionListener
                     return;
                 }
                 
-                if (checkWallCollision(bird, RIGHT_COLLISION))
-                {
-                    bird.setImage(bird.iicon_bird_right);
-                    repaint();
-                    return;
-                }
-                
-                if (checkEggCollision(RIGHT_COLLISION))
+                if (checkCollision(RIGHT_COLLISION))
                 {
                     bird.setImage(bird.iicon_bird_right);
                     repaint();
@@ -555,14 +541,7 @@ public class Board extends JPanel implements ActionListener
                     return;
                 }
                 
-                if (checkWallCollision(bird, TOP_COLLISION))
-                {
-                    bird.setImage(bird.iicon_bird_up);
-                    repaint();
-                    return;
-                }
-                
-                if (checkEggCollision(TOP_COLLISION))
+                if (checkCollision(TOP_COLLISION))
                 {
                     bird.setImage(bird.iicon_bird_up);
                     repaint();
@@ -686,14 +665,7 @@ public class Board extends JPanel implements ActionListener
                     return;
                 }
                 
-                if (checkWallCollision(bird, BOTTOM_COLLISION))
-                {
-                    bird.setImage(bird.iicon_bird_down);
-                    repaint();
-                    return;
-                }
-                
-                if (checkEggCollision(BOTTOM_COLLISION))
+                if (checkCollision(BOTTOM_COLLISION))
                 {
                     bird.setImage(bird.iicon_bird_down);
                     repaint();
@@ -965,11 +937,16 @@ public class Board extends JPanel implements ActionListener
         return false;
     }
     
-    private boolean checkEggCollision(int type)
+    private boolean checkCollision(int type)
     {
         switch (type)
         {    
             case LEFT_COLLISION:
+            
+            if (checkWallCollision(bird, LEFT_COLLISION))
+            {
+                return true;
+            }
             
             for (Egg egg1 : eggs)
             {
@@ -994,6 +971,11 @@ public class Board extends JPanel implements ActionListener
             
             case RIGHT_COLLISION:
             
+            if (checkWallCollision(bird, RIGHT_COLLISION))
+            {
+                return true;
+            }
+            
             for (Egg egg1 : eggs)
             {
                 if (bird.isRightCollision(egg1))
@@ -1016,6 +998,11 @@ public class Board extends JPanel implements ActionListener
             return false;
             
             case TOP_COLLISION:
+            
+            if (checkWallCollision(bird, TOP_COLLISION))
+            {
+                return true;
+            }
             
             for (Egg egg1 : eggs)
             {
@@ -1040,11 +1027,16 @@ public class Board extends JPanel implements ActionListener
             
             case BOTTOM_COLLISION:
             
+            if (checkWallCollision(bird, BOTTOM_COLLISION))
+            {
+                return true;
+            }
+            
             for (Egg egg1 : eggs)
             {
                 if (bird.isBottomCollision(egg1))
                 {
-                    if (checkWallCollision(egg1,BOTTOM_COLLISION))
+                    if (checkWallCollision(egg1, BOTTOM_COLLISION))
                     {
                         return true;
                     }
