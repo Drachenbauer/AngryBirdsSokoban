@@ -308,7 +308,7 @@ public class Board extends JPanel implements ActionListener
                     if (bird.isLeftCollision(egg))
                     {
                         egg.setImage(egg.iicon_egg_1);
-
+                        
                         egg.move(-SPACE / 4, 0);
                         repaint();
                         
@@ -432,7 +432,7 @@ public class Board extends JPanel implements ActionListener
                     if (bird.isRightCollision(egg))
                     {
                         egg.setImage(egg.iicon_egg_1);
-
+                        
                         egg.move(SPACE / 4, 0);
                         repaint();
                         
@@ -556,7 +556,7 @@ public class Board extends JPanel implements ActionListener
                     if (bird.isTopCollision(egg))
                     {
                         egg.setImage(egg.iicon_egg_1);
-
+                        
                         egg.move(0, -SPACE / 4);
                         repaint();
                         
@@ -680,7 +680,7 @@ public class Board extends JPanel implements ActionListener
                     if (bird.isBottomCollision(egg))
                     {
                         egg.setImage(egg.iicon_egg_1);
-
+                        
                         egg.move(0, SPACE / 4);
                         repaint();
                         

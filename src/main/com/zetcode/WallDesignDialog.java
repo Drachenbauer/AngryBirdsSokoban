@@ -15,25 +15,25 @@ import javax.swing.SwingConstants;
 @SuppressWarnings("serial")
 public class WallDesignDialog extends JDialog
 {
-	private JPanel contentPane = new JPanel();
-	private JLabel text = new JLabel("Choose your Wall-Design!", SwingConstants.CENTER);
+    private JPanel contentPane = new JPanel();
+    private JLabel text = new JLabel("Choose your Wall-Design!", SwingConstants.CENTER);
     @SuppressWarnings("rawtypes")
-	public JComboBox wallList;
+    public JComboBox wallList;
     public JButton okButton = new JButton("OK");
     
     ImageIcon[] images;
     
     String[] wallDesigns = {"Bricks", "Bricks-Frame",
-    		                "Ice", "Ice-Frame",
-    		                "Stone", "Stone-Frame",
-    		                "Wood", "Wood-Frame"};
+                            "Ice", "Ice-Frame",
+                            "Stone", "Stone-Frame",
+                            "Wood", "Wood-Frame"};
     
     private int selectedIndex;
     public String selected;
     
-	@SuppressWarnings({ "unchecked", "rawtypes", "unused" })
-	public WallDesignDialog(String title, boolean modal, String selected)
-	{
+    @SuppressWarnings({ "unchecked", "rawtypes", "unused" })
+    public WallDesignDialog(String title, boolean modal, String selected)
+    {
         super();
         setDefaultCloseOperation(HIDE_ON_CLOSE);
         setModal(modal);
@@ -82,41 +82,41 @@ public class WallDesignDialog extends JDialog
         setResizable(false);
         pack();
     }
-	
-	@SuppressWarnings({ "rawtypes" })
-	class ComboBoxRenderer extends JLabel implements ListCellRenderer
-	{
-		public ComboBoxRenderer()
-		{
-			setOpaque(true);
-	    	setHorizontalAlignment(CENTER);
-	    	setVerticalAlignment(CENTER);
-	    	selected = wallDesigns[selectedIndex];
-		}
-		
-		@Override
-		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus)
-		{
-			int selectedIndex = ((Integer)value).intValue();
-			
-			if (isSelected)
-			{
-	            setBackground(list.getSelectionBackground());
-	            setForeground(list.getSelectionForeground());
-	            selected = wallDesigns[selectedIndex];
-	        }
-			else
-			{
-	            setBackground(list.getBackground());
-	            setForeground(list.getForeground());
-	        }
-			
-	        setIcon(images[selectedIndex]);
-	        setText(wallDesigns[selectedIndex]);
-	        setFont(list.getFont());
-	        
-			return this;
-		}
-	}
+    
+    @SuppressWarnings({ "rawtypes" })
+    class ComboBoxRenderer extends JLabel implements ListCellRenderer
+    {
+        public ComboBoxRenderer()
+        {
+            setOpaque(true);
+            setHorizontalAlignment(CENTER);
+            setVerticalAlignment(CENTER);
+            selected = wallDesigns[selectedIndex];
+        }
+        
+        @Override
+        public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus)
+        {
+            int selectedIndex = ((Integer)value).intValue();
+            
+            if (isSelected)
+            {
+                setBackground(list.getSelectionBackground());
+                setForeground(list.getSelectionForeground());
+                selected = wallDesigns[selectedIndex];
+            }
+            else
+            {
+                setBackground(list.getBackground());
+                setForeground(list.getForeground());
+            }
+            
+            setIcon(images[selectedIndex]);
+            setText(wallDesigns[selectedIndex]);
+            setFont(list.getFont());
+            
+            return this;
+        }
+    }
 }
 

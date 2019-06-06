@@ -110,7 +110,7 @@ public class LevelDialog extends JDialog
             setVerticalAlignment(CENTER);
             level_number = selectedIndex;
         }
-
+        
         @Override
         public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus)
         {
