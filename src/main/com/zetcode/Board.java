@@ -102,13 +102,13 @@ public class Board extends JPanel implements ActionListener
         
         addKeyListener(new TAdapter());
         
-        level_dialog = new LevelDialog("Choose Level", true, level_number, solved);
+        level_dialog = new LevelDialog(level_number, solved);
         level_dialog.okButton.addActionListener(this);
         
-        bird_dialog = new BirdDialog("Choose Bird", true, selected_bird);
+        bird_dialog = new BirdDialog(selected_bird);
         bird_dialog.okButton.addActionListener(this);
         
-        wall_design_dialog = new WallDesignDialog("Choose Wall-Design", true, selected_wall);
+        wall_design_dialog = new WallDesignDialog(selected_wall);
         wall_design_dialog.okButton.addActionListener(this);
     }
     

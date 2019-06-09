@@ -32,12 +32,12 @@ public class WallDesignDialog extends JDialog
     public String selected;
     
     @SuppressWarnings({ "unchecked", "rawtypes", "unused" })
-    public WallDesignDialog(String title, boolean modal, String selected)
+    public WallDesignDialog(String selected)
     {
         super();
         setDefaultCloseOperation(HIDE_ON_CLOSE);
-        setModal(modal);
-        setTitle(title);
+        setModal(true);
+        setTitle("Choose Wall-Design");
         
         images = new ImageIcon[wallDesigns.length];
         Integer[] intArray = new Integer[wallDesigns.length];

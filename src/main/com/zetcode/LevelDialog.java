@@ -31,12 +31,12 @@ public class LevelDialog extends JDialog
     public int[] solved = new int[levels.levels.size()];
     
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    public LevelDialog(String title, boolean modal, int level_number, int[] solved)
+    public LevelDialog(int level_number, int[] solved)
     {
         super();
         setDefaultCloseOperation(HIDE_ON_CLOSE);
-        setModal(modal);
-        setTitle(title);
+        setModal(true);
+        setTitle("Choose Level");
         
         this.level_number = level_number;
         this.solved = solved;

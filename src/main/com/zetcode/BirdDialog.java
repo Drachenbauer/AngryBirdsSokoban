@@ -37,12 +37,12 @@ public class BirdDialog extends JDialog
     public String selected;
     
     @SuppressWarnings({ "unchecked", "rawtypes", "unused" })
-    public BirdDialog(String title, boolean modal, String selected)
+    public BirdDialog(String selected)
     {
         super();
         setDefaultCloseOperation(HIDE_ON_CLOSE);
-        setModal(modal);
-        setTitle(title);
+        setModal(true);
+        setTitle("Choose Bird");
         
         this.selected = selected;
         
