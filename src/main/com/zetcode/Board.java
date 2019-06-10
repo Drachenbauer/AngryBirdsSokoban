@@ -44,6 +44,7 @@ public class Board extends JPanel implements ActionListener
     
     private int moves = 0;
     
+    private boolean isSolved = false;
     private boolean isCompleted = false;
     private boolean isMoving = false;
     
@@ -51,7 +52,7 @@ public class Board extends JPanel implements ActionListener
     public Levels levels = new Levels();
     public String level;
     public int level_number = 0;
-    public boolean[] isSolved = new boolean[levels.levels.size()];
+    public boolean[] isLevelSolved = new boolean[levels.levels.size()];
     
     public BirdDialog bird_dialog;
     public String selected_bird;
@@ -75,7 +76,7 @@ public class Board extends JPanel implements ActionListener
         
         for (String level: levels.levels)
         {
-            isSolved[i] = false;
+            isLevelSolved[i] = false;
             i++;
         }
         
@@ -91,7 +92,7 @@ public class Board extends JPanel implements ActionListener
             
             for (String level: levels.levels)
             {
-                isSolved[i] = ini.get("Levels", "Level "  + i + " solved", boolean.class);
+                isLevelSolved[i] = ini.get("Levels", "Level "  + i + " solved", boolean.class);
                 i++;
             }
         }
@@ -102,7 +103,7 @@ public class Board extends JPanel implements ActionListener
         
         addKeyListener(new TAdapter());
         
-        level_dialog = new LevelDialog(level_number, isSolved);
+        level_dialog = new LevelDialog(level_number, isLevelSolved);
         level_dialog.okButton.addActionListener(this);
         
         bird_dialog = new BirdDialog(selected_bird);
@@ -115,6 +116,11 @@ public class Board extends JPanel implements ActionListener
     private void initWorld()
     {
         moves = 0;
+        
+        if (isSolved)
+        {
+            isSolved = false;
+        }
         
         if (isCompleted)
         {
@@ -390,7 +396,7 @@ public class Board extends JPanel implements ActionListener
                                                 moves++;
                                                 repaint();
                                                 
-                                                if (finishedEggs != nOfEggs)
+                                                if (!isSolved)
                                                 {
                                                     isMoving = false;
                                                 }
@@ -514,7 +520,7 @@ public class Board extends JPanel implements ActionListener
                                                 moves++;
                                                 repaint();
                                                 
-                                                if (finishedEggs != nOfEggs)
+                                                if (!isSolved)
                                                 {
                                                     isMoving = false;
                                                 }
@@ -638,7 +644,7 @@ public class Board extends JPanel implements ActionListener
                                                 moves++;
                                                 repaint();
                                                 
-                                                if (finishedEggs != nOfEggs)
+                                                if (!isSolved)
                                                 {
                                                     isMoving = false;
                                                 }
@@ -762,7 +768,7 @@ public class Board extends JPanel implements ActionListener
                                                 moves++;
                                                 repaint();
                                                 
-                                                if (finishedEggs != nOfEggs)
+                                                if (!isSolved)
                                                 {
                                                     isMoving = false;
                                                 }
@@ -812,7 +818,7 @@ public class Board extends JPanel implements ActionListener
                 
                 case KeyEvent.VK_L:
                 
-                level_dialog.isSolved = isSolved;
+                level_dialog.isLevelSolved = isLevelSolved;
                 level_dialog.setSolvedGraphics();
                 level_dialog.setVisible(true);
                 
@@ -843,7 +849,7 @@ public class Board extends JPanel implements ActionListener
     {
         if (evt.getSource()==level_dialog.okButton)
         {
-            loadLevel((int)level_dialog.levelList.getSelectedItem());
+            loadLevel(level_dialog.level_number);
             level_dialog.setVisible(false);
         }
         else if (evt.getSource()==wall_design_dialog.okButton)
@@ -1043,7 +1049,9 @@ public class Board extends JPanel implements ActionListener
         
         if (finishedEggs == nOfEggs)
         {
-            isSolved[level_number] = true;
+            isSolved = true;
+            
+            isLevelSolved[level_number] = true;
             
             if (level_number + 1 < levels.levels.size())
             {

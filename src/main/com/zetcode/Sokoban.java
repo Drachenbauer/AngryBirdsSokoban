@@ -52,7 +52,7 @@ public class Sokoban extends JFrame
                     
                     for (String level: board.levels.levels)
                     {
-                        ini.put("Levels", "Level "  + i + " solved", board.isSolved[i]);
+                        ini.put("Levels", "Level "  + i + " solved", board.isLevelSolved[i]);
                         i++;
                     }
                     

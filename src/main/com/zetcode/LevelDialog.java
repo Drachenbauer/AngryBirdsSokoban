@@ -27,11 +27,11 @@ public class LevelDialog extends JDialog
     private int selectedIndex;
     private Integer[] intArray;
     
-    private int level_number;
-    public boolean[] isSolved = new boolean[levels.levels.size()];
+    public int level_number;
+    public boolean[] isLevelSolved = new boolean[levels.levels.size()];
     
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    public LevelDialog(int level_number, boolean[] solved)
+    public LevelDialog(int level_number, boolean[] isLevelSolved)
     {
         super();
         setDefaultCloseOperation(HIDE_ON_CLOSE);
@@ -39,7 +39,7 @@ public class LevelDialog extends JDialog
         setTitle("Choose Level");
         
         this.level_number = level_number;
-        this.isSolved = solved;
+        this.isLevelSolved = isLevelSolved;
         
         setSolvedGraphics();
         
@@ -82,7 +82,7 @@ public class LevelDialog extends JDialog
         {
             intArray[i] = i;
             
-            if (isSolved[i])
+            if (isLevelSolved[i])
             {
                 images[i] = new ImageIcon("src/main/resources/nest_icon_solved.png");
             }
