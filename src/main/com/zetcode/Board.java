@@ -51,7 +51,7 @@ public class Board extends JPanel implements ActionListener
     public Levels levels = new Levels();
     public String level;
     public int level_number = 0;
-    public int[] solved = new int[levels.levels.size()];
+    public boolean[] isSolved = new boolean[levels.levels.size()];
     
     public BirdDialog bird_dialog;
     public String selected_bird;
@@ -75,7 +75,7 @@ public class Board extends JPanel implements ActionListener
         
         for (String level: levels.levels)
         {
-            solved[i] = 0;
+            isSolved[i] = false;
             i++;
         }
         
@@ -91,7 +91,7 @@ public class Board extends JPanel implements ActionListener
             
             for (String level: levels.levels)
             {
-                solved[i] = ini.get("Levels", "Level "  + i + " solved", int.class);
+                isSolved[i] = ini.get("Levels", "Level "  + i + " solved", boolean.class);
                 i++;
             }
         }
@@ -102,7 +102,7 @@ public class Board extends JPanel implements ActionListener
         
         addKeyListener(new TAdapter());
         
-        level_dialog = new LevelDialog(level_number, solved);
+        level_dialog = new LevelDialog(level_number, isSolved);
         level_dialog.okButton.addActionListener(this);
         
         bird_dialog = new BirdDialog(selected_bird);
@@ -812,7 +812,7 @@ public class Board extends JPanel implements ActionListener
                 
                 case KeyEvent.VK_L:
                 
-                level_dialog.solved = solved;
+                level_dialog.isSolved = isSolved;
                 level_dialog.setSolvedGraphics();
                 level_dialog.setVisible(true);
                 
@@ -1043,7 +1043,7 @@ public class Board extends JPanel implements ActionListener
         
         if (finishedEggs == nOfEggs)
         {
-            solved[level_number] = 1;
+            isSolved[level_number] = true;
             
             if (level_number + 1 < levels.levels.size())
             {
