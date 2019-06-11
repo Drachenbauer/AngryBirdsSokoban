@@ -1034,7 +1034,6 @@ public class Board extends JPanel implements ActionListener
         if (finishedEggs == nOfEggs)
         {
             isSolved = true;
-            
             isLevelSolved[level_number] = true;
             
             timer.schedule(new TimerTask()
