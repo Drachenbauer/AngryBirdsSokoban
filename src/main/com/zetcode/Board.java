@@ -231,7 +231,7 @@ public class Board extends JPanel implements ActionListener
             }
         }
         
-        isCompleted();
+        isSolved();
     }
     
     private void buildWorld(Graphics g)
@@ -342,7 +342,7 @@ public class Board extends JPanel implements ActionListener
                                                 egg.move(-SPACE / 4, 0);
                                                 repaint();
                                                 
-                                                isCompleted();
+                                                isSolved();
                                             }
                                         }
                                         , 100);
@@ -462,7 +462,7 @@ public class Board extends JPanel implements ActionListener
                                                 egg.move(SPACE / 4, 0);
                                                 repaint();
                                                 
-                                                isCompleted();
+                                                isSolved();
                                             }
                                         }
                                         , 100);
@@ -582,7 +582,7 @@ public class Board extends JPanel implements ActionListener
                                                 egg.move(0, -SPACE / 4);
                                                 repaint();
                                                 
-                                                isCompleted();
+                                                isSolved();
                                             }
                                         }
                                         , 100);
@@ -702,7 +702,7 @@ public class Board extends JPanel implements ActionListener
                                                 egg.move(0, SPACE / 4);
                                                 repaint();
                                                 
-                                                isCompleted();
+                                                isSolved();
                                             }
                                         }
                                         , 100);
@@ -789,7 +789,7 @@ public class Board extends JPanel implements ActionListener
                     }
                     
                     moves--;
-                    isCompleted();
+                    isSolved();
                 }
                 
                 break;
@@ -802,6 +802,8 @@ public class Board extends JPanel implements ActionListener
                 
                 case KeyEvent.VK_L:
                 
+                level_dialog.levelList.setSelectedIndex(level_number);
+                level_dialog.level_number = level_number;
                 level_dialog.isLevelSolved = isLevelSolved;
                 level_dialog.setSolvedGraphics();
                 level_dialog.setVisible(true);
@@ -1014,7 +1016,7 @@ public class Board extends JPanel implements ActionListener
         return false;
     }
     
-    private void isCompleted()
+    private void isSolved()
     {
         nOfEggs = eggs.size();
         finishedEggs = 0;
