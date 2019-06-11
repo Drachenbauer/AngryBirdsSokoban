@@ -789,7 +789,7 @@ public class Board extends JPanel implements ActionListener
                 
                 case KeyEvent.VK_BACK_SPACE:
                 
-                if (isCompleted)
+                if (isSolved)
                 {
                     return;
                 }
@@ -1053,23 +1053,25 @@ public class Board extends JPanel implements ActionListener
             
             isLevelSolved[level_number] = true;
             
-            if (level_number + 1 < levels.levels.size())
+            timer.schedule(new TimerTask()
             {
-                timer.schedule(new TimerTask()
+                @Override
+                public void run()
                 {
-                    @Override
-                    public void run()
-                    {
+                    if (level_number + 1 < levels.levels.size())
+                    {   
                         loadLevel(level_number + 1);
-                        isMoving = false;
                     }
+                    else
+                    {
+                        isCompleted = true;
+                        repaint();
+                    }
+                    
+                    isMoving = false;
                 }
-                , 2000);
             }
-            else
-            {
-                isCompleted = true;
-            }
+            , 2000);
         }
         
         repaint();
