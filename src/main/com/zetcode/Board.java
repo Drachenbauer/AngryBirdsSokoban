@@ -293,7 +293,7 @@ public class Board extends JPanel implements ActionListener
             {    
                 case KeyEvent.VK_LEFT:
                 
-                if (isCompleted)
+                if (isSolved)
                 {
                     return;
                 }
@@ -395,11 +395,7 @@ public class Board extends JPanel implements ActionListener
                                             {
                                                 moves++;
                                                 repaint();
-                                                
-                                                if (!isSolved)
-                                                {
-                                                    isMoving = false;
-                                                }
+                                                isMoving = false;
                                             }
                                         }
                                         , 100);
@@ -417,7 +413,7 @@ public class Board extends JPanel implements ActionListener
                 
                 case KeyEvent.VK_RIGHT:
                 
-                if (isCompleted)
+                if (isSolved)
                 {
                     return;
                 }
@@ -519,11 +515,7 @@ public class Board extends JPanel implements ActionListener
                                             {
                                                 moves++;
                                                 repaint();
-                                                
-                                                if (!isSolved)
-                                                {
-                                                    isMoving = false;
-                                                }
+                                                isMoving = false;
                                             }
                                         }
                                         , 100);
@@ -541,7 +533,7 @@ public class Board extends JPanel implements ActionListener
                 
                 case KeyEvent.VK_UP:
                 
-                if (isCompleted)
+                if (isSolved)
                 {
                     return;
                 }
@@ -643,11 +635,7 @@ public class Board extends JPanel implements ActionListener
                                             {
                                                 moves++;
                                                 repaint();
-                                                
-                                                if (!isSolved)
-                                                {
-                                                    isMoving = false;
-                                                }
+                                                isMoving = false;
                                             }
                                         }
                                         , 100);
@@ -665,7 +653,7 @@ public class Board extends JPanel implements ActionListener
                 
                 case KeyEvent.VK_DOWN:
                 
-                if (isCompleted)
+                if (isSolved)
                 {
                     return;
                 }
@@ -767,11 +755,7 @@ public class Board extends JPanel implements ActionListener
                                             {
                                                 moves++;
                                                 repaint();
-                                                
-                                                if (!isSolved)
-                                                {
-                                                    isMoving = false;
-                                                }
+                                                isMoving = false;
                                             }
                                         }
                                         , 100);
@@ -1067,8 +1051,6 @@ public class Board extends JPanel implements ActionListener
                         isCompleted = true;
                         repaint();
                     }
-                    
-                    isMoving = false;
                 }
             }
             , 2000);
