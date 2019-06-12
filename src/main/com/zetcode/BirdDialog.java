@@ -80,6 +80,7 @@ public class BirdDialog extends JDialog
         birdList.setLocation(16, 80);
         birdList.setSize(288, 40);
         birdList.setFont(new Font("Courier New", Font.BOLD, 16));
+        birdList.setMaximumRowCount(10);
         birdList.setSelectedIndex(selectedIndex);
         
         contentPane.add(okButton);

@@ -316,7 +316,6 @@ public class Board extends JPanel implements ActionListener
                         egg.setImage(egg.iicon_egg_1);
                         
                         egg.move(-SPACE / 4, 0);
-                        repaint();
                         
                         timer.schedule(new TimerTask()
                         {
@@ -324,7 +323,6 @@ public class Board extends JPanel implements ActionListener
                             public void run()
                             {
                                 egg.move(-SPACE / 4, 0);
-                                repaint();
                                 
                                 timer.schedule(new TimerTask()
                                 {
@@ -332,7 +330,6 @@ public class Board extends JPanel implements ActionListener
                                     public void run()
                                     {
                                         egg.move(-SPACE / 4, 0);
-                                        repaint();
                                         
                                         timer.schedule(new TimerTask()
                                         {
@@ -340,7 +337,6 @@ public class Board extends JPanel implements ActionListener
                                             public void run()
                                             {
                                                 egg.move(-SPACE / 4, 0);
-                                                repaint();
                                                 
                                                 isSolved();
                                             }
@@ -436,7 +432,6 @@ public class Board extends JPanel implements ActionListener
                         egg.setImage(egg.iicon_egg_1);
                         
                         egg.move(SPACE / 4, 0);
-                        repaint();
                         
                         timer.schedule(new TimerTask()
                         {
@@ -444,7 +439,6 @@ public class Board extends JPanel implements ActionListener
                             public void run()
                             {
                                 egg.move(SPACE / 4, 0);
-                                repaint();
                                 
                                 timer.schedule(new TimerTask()
                                 {
@@ -452,7 +446,6 @@ public class Board extends JPanel implements ActionListener
                                     public void run()
                                     {
                                         egg.move(SPACE / 4, 0);
-                                        repaint();
                                         
                                         timer.schedule(new TimerTask()
                                         {
@@ -460,7 +453,6 @@ public class Board extends JPanel implements ActionListener
                                             public void run()
                                             {
                                                 egg.move(SPACE / 4, 0);
-                                                repaint();
                                                 
                                                 isSolved();
                                             }
@@ -556,7 +548,6 @@ public class Board extends JPanel implements ActionListener
                         egg.setImage(egg.iicon_egg_1);
                         
                         egg.move(0, -SPACE / 4);
-                        repaint();
                         
                         timer.schedule(new TimerTask()
                         {
@@ -564,7 +555,6 @@ public class Board extends JPanel implements ActionListener
                             public void run()
                             {
                                 egg.move(0, -SPACE / 4);
-                                repaint();
                                 
                                 timer.schedule(new TimerTask()
                                 {
@@ -572,7 +562,6 @@ public class Board extends JPanel implements ActionListener
                                     public void run()
                                     {
                                         egg.move(0, -SPACE / 4);
-                                        repaint();
                                         
                                         timer.schedule(new TimerTask()
                                         {
@@ -580,7 +569,6 @@ public class Board extends JPanel implements ActionListener
                                             public void run()
                                             {
                                                 egg.move(0, -SPACE / 4);
-                                                repaint();
                                                 
                                                 isSolved();
                                             }
@@ -676,7 +664,6 @@ public class Board extends JPanel implements ActionListener
                         egg.setImage(egg.iicon_egg_1);
                         
                         egg.move(0, SPACE / 4);
-                        repaint();
                         
                         timer.schedule(new TimerTask()
                         {
@@ -684,7 +671,6 @@ public class Board extends JPanel implements ActionListener
                             public void run()
                             {
                                 egg.move(0, SPACE / 4);
-                                repaint();
                                 
                                 timer.schedule(new TimerTask()
                                 {
@@ -692,7 +678,6 @@ public class Board extends JPanel implements ActionListener
                                     public void run()
                                     {
                                         egg.move(0, SPACE / 4);
-                                        repaint();
                                         
                                         timer.schedule(new TimerTask()
                                         {
@@ -700,7 +685,6 @@ public class Board extends JPanel implements ActionListener
                                             public void run()
                                             {
                                                 egg.move(0, SPACE / 4);
-                                                repaint();
                                                 
                                                 isSolved();
                                             }
