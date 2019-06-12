@@ -24,16 +24,15 @@ public class BirdDialog extends JDialog
     public JButton okButton = new JButton("OK");
     
     private ImageIcon[] images;
-    
     private String[] birds = {"Red", "Chuck", "The Blues",
-                      "Bomb", "Mathilda", "Terence",
-                      "Silver", "Bubbles", "Hal",
-                      "Stella", "Ice Bird"};
+                              "Bomb", "Mathilda", "Terence",
+                              "Silver", "Bubbles", "Hal",
+                              "Stella", "Ice Bird"};
     
-    String[] birds_resources = {"Red", "Chuck", "The_Blues",
-                                "Bomb", "Mathilda", "Terence",
-                                "Silver", "Bubbles", "Hal",
-                                "Stella", "Ice_Bird"};
+    private String[] birds_resources = {"Red", "Chuck", "The_Blues",
+                                        "Bomb", "Mathilda", "Terence",
+                                        "Silver", "Bubbles", "Hal",
+                                        "Stella", "Ice_Bird"};
     
     private int selectedIndex;
     public String selected;
