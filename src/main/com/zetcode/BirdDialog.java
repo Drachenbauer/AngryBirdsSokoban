@@ -2,6 +2,8 @@ package main.com.zetcode;
 
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -16,14 +18,14 @@ import javax.swing.SwingConstants;
 public class BirdDialog extends JDialog
 {
     private JPanel contentPane = new JPanel();
-    private JLabel text = new JLabel("Choose your bird-character to play as!", SwingConstants.CENTER);
+    private JLabel text = new JLabel("<html><center>Choose your bird-character<br/>to play as!</center></html>", SwingConstants.CENTER);
     @SuppressWarnings("rawtypes")
     public JComboBox birdList;
     public JButton okButton = new JButton("OK");
     
-    ImageIcon[] images;
+    private ImageIcon[] images;
     
-    String[] birds = {"Red", "Chuck", "The Blues",
+    private String[] birds = {"Red", "Chuck", "The Blues",
                       "Bomb", "Mathilda", "Terence",
                       "Silver", "Bubbles", "Hal",
                       "Stella", "Ice Bird"};
@@ -40,7 +42,6 @@ public class BirdDialog extends JDialog
     public BirdDialog(String selected)
     {
         super();
-        setDefaultCloseOperation(HIDE_ON_CLOSE);
         setModal(true);
         setTitle("Choose Bird");
         
@@ -72,23 +73,28 @@ public class BirdDialog extends JDialog
         
         contentPane.add(text);
         text.setLocation(16, 16);
-        text.setSize(224, 32);
+        text.setSize(288, 32);
+        text.setFont(new Font("Courier New", Font.BOLD, 16));
         
         contentPane.add(birdList);
         birdList.setLocation(16, 80);
-        birdList.setSize(224, 40);
-        birdList.setMaximumRowCount(10);
+        birdList.setSize(288, 40);
+        birdList.setFont(new Font("Courier New", Font.BOLD, 16));
         birdList.setSelectedIndex(selectedIndex);
         
         contentPane.add(okButton);
         okButton.setLocation(16, 144);
-        okButton.setSize(224, 32);
+        okButton.setSize(288, 32);
+        okButton.setFont(new Font("Courier New", Font.BOLD, 16));
         
         add(contentPane);
-        contentPane.setPreferredSize(new Dimension(256, 192));
+        contentPane.setPreferredSize(new Dimension(320, 192));
         
         setResizable(false);
         pack();
+        
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
     }
     
     @SuppressWarnings({ "rawtypes" })

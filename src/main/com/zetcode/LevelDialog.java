@@ -2,6 +2,8 @@ package main.com.zetcode;
 
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -24,7 +26,6 @@ public class LevelDialog extends JDialog
     private Levels levels = new Levels();
     
     private ImageIcon[] images;
-    private int selectedIndex;
     private Integer[] intArray;
     
     public int level_number;
@@ -52,23 +53,28 @@ public class LevelDialog extends JDialog
         
         contentPane.add(text);
         text.setLocation(16, 16);
-        text.setSize(224, 32);
+        text.setSize(288, 32);
+        text.setFont(new Font("Courier New", Font.BOLD, 16));
         
         contentPane.add(levelList);
         levelList.setLocation(16, 80);
-        levelList.setSize(224, 40);
+        levelList.setSize(288, 40);
+        levelList.setFont(new Font("Courier New", Font.BOLD, 16));
         levelList.setMaximumRowCount(10);
-        levelList.setSelectedIndex(selectedIndex);
         
         contentPane.add(okButton);
         okButton.setLocation(16, 144);
-        okButton.setSize(224, 32);
+        okButton.setSize(288, 32);
+        okButton.setFont(new Font("Courier New", Font.BOLD, 16));
         
         add(contentPane);
-        contentPane.setPreferredSize(new Dimension(256, 192));
+        contentPane.setPreferredSize(new Dimension(320, 192));
         
         setResizable(false);
         pack();
+        
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
     }
     
     @SuppressWarnings("unused")
@@ -91,11 +97,6 @@ public class LevelDialog extends JDialog
                 images[i] = new ImageIcon("src/main/resources/nest_icon.png");
             }
             
-            if (intArray[i] == level_number)
-            {
-                selectedIndex = i;
-            }
-            
             i++;
         }
     }
@@ -108,7 +109,6 @@ public class LevelDialog extends JDialog
             setOpaque(true);
             setHorizontalAlignment(CENTER);
             setVerticalAlignment(CENTER);
-            level_number = selectedIndex;
         }
         
         @Override

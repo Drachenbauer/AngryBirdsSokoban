@@ -2,6 +2,8 @@ package main.com.zetcode;
 
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -16,17 +18,16 @@ import javax.swing.SwingConstants;
 public class WallDesignDialog extends JDialog
 {
     private JPanel contentPane = new JPanel();
-    private JLabel text = new JLabel("Choose your Wall-Design!", SwingConstants.CENTER);
+    private JLabel text = new JLabel("Choose your wall-design!", SwingConstants.CENTER);
     @SuppressWarnings("rawtypes")
     public JComboBox wallList;
     public JButton okButton = new JButton("OK");
     
-    ImageIcon[] images;
-    
-    String[] wallDesigns = {"Bricks", "Bricks-Frame",
-                            "Ice", "Ice-Frame",
-                            "Stone", "Stone-Frame",
-                            "Wood", "Wood-Frame"};
+    private ImageIcon[] images;
+    private String[] wallDesigns = {"Bricks", "Bricks-Frame",
+                                    "Ice", "Ice-Frame",
+                                    "Stone", "Stone-Frame",
+                                    "Wood", "Wood-Frame"};
     
     private int selectedIndex;
     public String selected;
@@ -35,7 +36,6 @@ public class WallDesignDialog extends JDialog
     public WallDesignDialog(String selected)
     {
         super();
-        setDefaultCloseOperation(HIDE_ON_CLOSE);
         setModal(true);
         setTitle("Choose Wall-Design");
         
@@ -65,22 +65,28 @@ public class WallDesignDialog extends JDialog
         
         contentPane.add(text);
         text.setLocation(16, 16);
-        text.setSize(224, 32);
+        text.setSize(288, 32);
+        text.setFont(new Font("Courier New", Font.BOLD, 16));
         
         contentPane.add(wallList);
         wallList.setLocation(16, 80);
-        wallList.setSize(224, 40);
+        wallList.setSize(288, 40);
+        wallList.setFont(new Font("Courier New", Font.BOLD, 16));
         wallList.setSelectedIndex(selectedIndex);
         
         contentPane.add(okButton);
         okButton.setLocation(16, 144);
-        okButton.setSize(224, 32);
+        okButton.setSize(288, 32);
+        okButton.setFont(new Font("Courier New", Font.BOLD, 16));
         
         add(contentPane);
-        contentPane.setPreferredSize(new Dimension(256, 192));
+        contentPane.setPreferredSize(new Dimension(320, 192));
         
         setResizable(false);
         pack();
+        
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
     }
     
     @SuppressWarnings({ "rawtypes" })
