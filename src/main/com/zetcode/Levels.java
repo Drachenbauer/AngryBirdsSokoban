@@ -3,18 +3,18 @@ package main.com.zetcode;
 import java.util.ArrayList;
 import java.util.Collections;
 
-/*
- * "#" = wall
- * "." = nest
- * "$" = egg
- * "@" = bird
- * "*" = egg in nest
- * "+" = bird in nest
- * " " = empty field
- * 
- * In this version of sokoban you control a bird from the
- * "Angry Birds" - flock and have to push eggs into nests.
- */
+/** 
+ ** "#" = wall
+ ** "." = nest
+ ** "$" = egg
+ ** "@" = bird
+ ** "*" = egg in nest
+ ** "+" = bird in nest
+ ** " " = empty floor
+ ** 
+ ** In this version of sokoban you control a bird from the
+ ** "Angry Birds" - flock and have to push eggs into nests.
+ **/
 
 public class Levels
 {
@@ -134,6 +134,25 @@ public class Levels
                                     + "        #  $    #\n"
                                     + "        # ##  $ #\n"
                                     + "        #    ####\n"
-                                    + "        ######\n" );
+                                    + "        ######\n" 
+                                    
+                                    , "      ######\n"
+                                    + "    ### ** ###\n"
+                                    + "  ###   **   ###\n"
+                                    + "###     **     ###\n"
+                                    + "#****************#\n"
+                                    + "#................#\n"
+                                    + "# $$$$$$..$$$$$$ #\n"
+                                    + "##     $..$     ##\n"
+                                    + " ##$ $ $..$ $ $##\n"
+                                    + "  # $  $..$  $ #\n"
+                                    + "  ## $ $..$ $ ##\n"
+                                    + "   ##  $..$  ##\n"
+                                    + "    #   ..   #\n"
+                                    + "    ##  **  ##\n"
+                                    + "     ## ** ##\n"
+                                    + "      #@** #\n"
+                                    + "      ##**##\n"
+                                    + "       ####\n" );
     }
 } 
